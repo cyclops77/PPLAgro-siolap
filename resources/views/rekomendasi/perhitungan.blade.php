@@ -1,0 +1,71 @@
+@extends('layouts.app')
+
+@section('judul')
+Produk Saya
+@stop
+
+@section('content')
+<div class="col-md-6 offset-3">
+    <div class="card">
+        <div class="card-header">Cari Rekomendasi . . .</div>
+        <form method="POST" action="/hitung-rekomendasi-penanaman" accept-charset="UTF-8" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <!-- PADI -->
+            <input type="hidden" value="{{$response['paramCuaca']}}" name="paramCuaca">
+            <input type="hidden" value="{{$response['paramSuhu']}}" name="paramSuhu">
+            <input type="hidden" value="{{$response['paramKelembaban']}}" name="paramKelembaban">
+				
+			<!-- JAGUNG -->
+           	<input type="hidden" value="{{$response['paramCuaca2']}}" name="paramCuaca2">
+            <input type="hidden" value="{{$response['paramSuhu2']}}" name="paramSuhu2">
+            <input type="hidden" value="{{$response['paramKelembaban2']}}" name="paramKelembaban2">
+
+			<!-- KEDELAI -->
+           	<input type="hidden" value="{{$response['paramCuaca3']}}" name="paramCuaca3">
+            <input type="hidden" value="{{$response['paramSuhu3']}}" name="paramSuhu3">
+            <input type="hidden" value="{{$response['paramKelembaban3']}}" name="paramKelembaban3">
+
+			<!-- TEMBAKAU -->
+           	<input type="hidden" value="{{$response['paramCuaca4']}}" name="paramCuaca4">
+            <input type="hidden" value="{{$response['paramSuhu4']}}" name="paramSuhu4">
+            <input type="hidden" value="{{$response['paramKelembaban4']}}" name="paramKelembaban4">
+
+			<!-- TEBU -->
+           	<input type="hidden" value="{{$response['paramCuaca5']}}" name="paramCuaca5">
+            <input type="hidden" value="{{$response['paramSuhu5']}}" name="paramSuhu5">
+            <input type="hidden" value="{{$response['paramKelembaban5']}}" name="paramKelembaban5">
+
+
+            <div class="card-body">
+			<div class="form-group">
+		    <label for="exampleFormControlSelect1">Pilih Komoditas</label>
+		    <select class="form-control" name="komoditas">
+		      <option disabled selected>Pilih Komoditas . . . </option>
+		      <option value="padi">Padi</option>
+		      <option value="jagung">Jagung</option>
+		      <option value="kedelai">Kedelai</option>
+		      <option value="tembakau">Tembakau</option>
+		      <option value="tebu">Tebu</option>
+		    </select>
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleFormControlSelect1">Pilih Jenis Tanah</label>
+		    <select class="form-control" name="tanah">
+		      <option disabled selected>Pilih Jenis Tanah . . . </option>
+		      <option value="andosol">Andosol</option>
+		      <option value="aluvial">Aluvial</option>
+		    </select>
+		  </div>
+  		</div>
+  		<div class="card-footer">
+  			
+  		<input type="submit" class="btn btn-dark" style="width: 100px;" value="Hitung">
+  		</div>
+
+  	</form>
+  </div>
+</div>
+
+
+
+@stop
