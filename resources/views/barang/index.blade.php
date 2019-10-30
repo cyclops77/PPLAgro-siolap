@@ -64,7 +64,7 @@ Produk Saya
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
   	
 <div class="row mt-2">
-@foreach($tebu as $ma)
+@foreach($tebu as $mb)
 <div class="card border-dark mb-4 mr-4" style="max-width: 22rem;">
   <img class="card-img-top" src="{{$mb->getAvatar()}}" alt="Card image cap" height="200px" style="border-bottom: 1px solid black;object-fit: cover">
   <div class="card-body text-dark">

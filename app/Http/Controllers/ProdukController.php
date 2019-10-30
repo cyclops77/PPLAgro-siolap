@@ -26,7 +26,7 @@ class ProdukController extends Controller
             ->get();
 
         $kedelai = \App\Produk::where('petani_id','=',$petaniID->id)
-            ->where('jenis_komoditas','=','kedelai')
+            ->where('jenis_komoditas','=','kedela')
             ->get();  
 
 

@@ -20,6 +20,7 @@ class PembayaranController extends Controller
     public function GakLunas()
     {
 
+        $now = date('Y-m-d H:i:s');    
         $userID = Auth::user()->id;
         $mitraID = \App\Outlet::where('user_id','=',$userID)->first();
 		$check = \App\Pembayaran::select('*')
@@ -37,8 +38,27 @@ class PembayaranController extends Controller
     		->where('mitra_id','=',$mitraID->id)
     		->where('status_bayar','=','Belum Bayar')
     		->get();
+
+        $pembayaranWajib = \App\Pembayaran::select('*')
+            ->join('produk','produk.id','=','pembelian.produk_id')
+            ->where('mitra_id','=',$mitraID->id)
+            ->where('status_bayar','=','Belum Bayar')
+            ->where('terakhir', '>', $now)
+            ->whereNotIn('id_pembelian',function($query) {
+              $query->select('pembelian_id')->from('pembelian_unverifed');
+            })
+            ->get();
+
+        $pembayaranTelat = \App\Pembayaran::select('*')
+            ->join('produk','produk.id','=','pembelian.produk_id')
+            ->where('mitra_id','=',$mitraID->id)
+            ->where('status_bayar','=','Belum Bayar')
+            ->where('terakhir', '<', $now)
+            ->get();    
+
     	}
-    	return view('pembayaran.statusbayar', compact('pembayaran','isEmpty'));
+        // dd($pembayaranWajib);
+    	return view('pembayaran.statusbayar', compact('pembayaran','isEmpty','pembayaranWajib','pembayaranTelat'));
     }
     public function LinkUploadBukti($id)
     {
@@ -82,10 +102,10 @@ class PembayaranController extends Controller
 
         $stok = ($AAproduk->stock) - ($req->jumlah);
 
-        $produk = \App\Produk::where('id','=',$pp->produk_id)
-            ->update([
-                'stock' => $stok,
-            ]);
+        // $produk = \App\Produk::where('id','=',$pp->produk_id)
+        //     ->update([
+        //         'stock' => $stok,
+        //     ]);
 
 
 

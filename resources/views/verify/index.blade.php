@@ -29,7 +29,7 @@ Produk Saya
     <p class=""><strong>Status : {{$mp->getStatus()}}</strong></p>
     <p class=""><strong>Jenis Komoditas : {{$mp->jenis_komoditas}}</strong></p>
     <p class=""><strong>Stok Komoditas : {{$mp->stock}} </strong>Kg</p>
-    <a href="/outlets/{{$mp->petani_id}}" class="btn btn-primary float-left" style="display: {{$mp->isverify=="no" ? "block" : "none"}}">Tinjau</a>
+    <!-- <a href="/outlets/{{$mp->petani_id}}" class="btn btn-primary float-left" style="display: {{$mp->isverify=="no" ? "block" : "none"}}">Tinjau</a> -->
     <!-- <a href="/produk/{{$mp->id}}/verifikasi" class="btn btn-primary float-right" style="display: {{$mp->isverify=="no" ? "block" : "none"}}">Verifikasi</a> -->
     <form method="POST" action="/verifikasi-barang-ini">
             {{ csrf_field() }}

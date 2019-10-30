@@ -75,6 +75,6 @@ class PengirimanController extends Controller
                'status_terkirim' => 'Terkirim',
                'status_terima' => 'Diterima',     
             ]);
-        return redirect()->back();
+        return redirect()->back()->with('sukses','Berhasil menerima barang');
     }
 }

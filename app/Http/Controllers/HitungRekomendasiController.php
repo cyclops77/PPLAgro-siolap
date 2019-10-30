@@ -1677,6 +1677,6 @@ class HitungRekomendasiController extends Controller
     	}
     		// dd($output);
 
-    	return view('rekomendasi.hasilcari',compact('output'));
+    	return view('rekomendasi.hasilcari',compact('output','hasilAkhir'));
     }
 }

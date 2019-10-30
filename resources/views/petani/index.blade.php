@@ -98,7 +98,7 @@ Status Pembayaran
     	<thead>
     		<th>No.</th>
     		<th>Nama Barang</th>
-    		<th>Jenis Komoditas</th>
+    		<th>Jenis Email</th>
     	</thead>
     	<tbody>
     		@php

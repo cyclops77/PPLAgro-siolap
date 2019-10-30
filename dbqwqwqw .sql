@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 27, 2019 at 03:35 PM
+-- Generation Time: Oct 30, 2019 at 08:29 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -51,7 +51,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `mitra` (
   `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(200) NOT NULL,
   `address` varchar(200) NOT NULL,
   `latitude` varchar(200) NOT NULL,
@@ -105,6 +105,7 @@ CREATE TABLE `pembelian` (
   `status_bayar` varchar(200) NOT NULL,
   `status_terkirim` varchar(200) NOT NULL,
   `status_terima` varchar(200) NOT NULL,
+  `terakhir` datetime DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -113,13 +114,40 @@ CREATE TABLE `pembelian` (
 -- Dumping data for table `pembelian`
 --
 
-INSERT INTO `pembelian` (`id_pembelian`, `mitra_id`, `produk_id`, `jumlah`, `harga_total`, `bukti_tf`, `status_bayar`, `status_terkirim`, `status_terima`, `created_at`, `updated_at`) VALUES
-(113918, 1095, 3657, 25, 125000, 'Screenshot from 2019-10-20 14-10-56.png', 'Sudah Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-27 13:36:06', '2019-10-27 06:36:06'),
-(178134, 1095, 3657, 50, 250000, 'Screenshot from 2019-10-07 12-56-40.png', 'Sudah Bayar', 'Terkirim', 'Diterima', '2019-10-26 07:15:56', '2019-10-26 00:15:56'),
-(193283, 1095, 3657, 70, 350000, 'Screenshot from 2019-09-29 18-45-38.png', 'Sudah Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-27 13:15:31', '2019-10-27 06:15:31'),
-(567957, 1095, 3657, 10, 50000, NULL, 'Belum Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-25 21:47:25', '2019-10-25 21:47:25'),
-(592861, 1098, 1405, 50, 1500000, 'Screenshot from 2019-08-13 10-43-22.png', 'Belum Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-27 14:32:48', '2019-10-27 07:32:48'),
-(703559, 1095, 3657, 30, 150000, 'Screenshot from 2019-10-03 15-41-24.png', 'Sudah Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-26 04:48:12', '2019-10-25 20:16:22');
+INSERT INTO `pembelian` (`id_pembelian`, `mitra_id`, `produk_id`, `jumlah`, `harga_total`, `bukti_tf`, `status_bayar`, `status_terkirim`, `status_terima`, `terakhir`, `created_at`, `updated_at`) VALUES
+(113918, 1095, 3657, 25, 125000, 'Screenshot from 2019-10-20 14-10-56.png', 'Sudah Bayar', 'Terkirim', 'Diterima', NULL, '2019-10-28 08:52:38', '2019-10-28 01:52:38'),
+(117425, 1095, 1405, 10, 300000, NULL, 'Belum Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-29 16:54:07', '2019-10-29 09:54:07', '2019-10-29 09:54:07'),
+(178134, 1095, 3657, 50, 250000, 'Screenshot from 2019-10-07 12-56-40.png', 'Sudah Bayar', 'Terkirim', 'Diterima', NULL, '2019-10-26 07:15:56', '2019-10-26 00:15:56'),
+(193283, 1095, 3657, 70, 350000, 'Screenshot from 2019-09-29 18-45-38.png', 'Sudah Bayar', 'Terkirim', 'Diterima', NULL, '2019-10-28 08:56:07', '2019-10-28 01:56:07'),
+(441443, 1095, 8290, 50, 2500000, 'Bukti-Transfer-Dana-SNP2M_Penelitian_Tanggal-15-10-2018-JAM-06.28.24-2.jpg', 'Sudah Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-29 16:54:07', '2019-10-30 03:57:41', '2019-10-29 20:57:41'),
+(567957, 1095, 3657, 10, 50000, 'Screenshot from 2019-10-26 15-43-14.png', 'Sudah Bayar', 'Belum Terkirim', 'Belum Terima', NULL, '2019-10-28 08:27:03', '2019-10-28 01:27:03'),
+(592861, 1098, 1405, 50, 1500000, 'Screenshot from 2019-08-13 10-43-22.png', 'Sudah Bayar', 'Sedang Mengirim', 'Belum Terima', NULL, '2019-10-27 14:58:32', '2019-10-27 07:58:32'),
+(688351, 1095, 1405, 11, 330000, NULL, 'Belum Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-31 03:48:24', '2019-10-29 20:48:25', '2019-10-29 20:48:25'),
+(703559, 1095, 3657, 30, 150000, 'Screenshot from 2019-10-03 15-41-24.png', 'Sudah Bayar', 'Terkirim', 'Diterima', NULL, '2019-10-30 03:41:51', '2019-10-29 20:41:51'),
+(879065, 1095, 8290, 17, 850000, NULL, 'Belum Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-30 01:57:54', '2019-10-30 06:05:46', '2019-10-29 09:57:54'),
+(915420, 1095, 3040, 15, 75000, NULL, 'Belum Bayar', 'Belum Terkirim', 'Belum Terima', '2019-10-30 08:30:20', '2019-10-30 06:06:45', '2019-10-29 21:32:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pembelian_unverifed`
+--
+
+CREATE TABLE `pembelian_unverifed` (
+  `id` bigint(20) NOT NULL,
+  `pembelian_id` bigint(20) NOT NULL,
+  `keterangan` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pembelian_unverifed`
+--
+
+INSERT INTO `pembelian_unverifed` (`id`, `pembelian_id`, `keterangan`, `created_at`, `updated_at`) VALUES
+(698666, 879065, 'Tidak Melakukan Transaksi', '2019-10-30 00:04:48', '2019-10-30 00:04:48'),
+(750133, 117425, 'Tidak Melakukan Transaksi', '2019-10-29 22:31:35', '2019-10-29 22:31:35');
 
 -- --------------------------------------------------------
 
@@ -173,12 +201,15 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `petani_id`, `nama_barang`, `jenis_komoditas`, `gambar`, `harga_barang`, `stock`, `isverify`, `created_at`, `updated_at`) VALUES
-(1405, 3, 'Tembakau SUper Sekaliii', 'tembakau', 'WhatsApp-Image-2018-08-28-at-17.52.56.jpeg', 30000, 320, 'yes', '2019-10-25 22:00:35', '2019-10-25 15:00:35'),
-(2623, 3, 'Tebu Manis Bat', 'tebu', 'Screenshot from 2019-10-18 21-43-16.png', 16500, 500, 'no', '2019-10-27 13:44:45', '2019-10-27 06:44:45'),
-(3040, 3, 'Beras Jati', 'padi', 'Screenshot from 2019-10-06 10-46-53.png', 5000, 700, 'no', '2019-10-25 14:58:23', '2019-10-25 14:58:23'),
-(3657, 3, 'Beras Merah Kaum Hawa', 'padi', 'BERAS-merah-gabung-768x1024.jpg', 5000, 210, 'yes', '2019-10-27 13:36:06', '2019-10-27 06:36:06'),
+(1405, 3, 'Tembakau SUper Sekaliii', 'tembakau', 'WhatsApp-Image-2018-08-28-at-17.52.56.jpeg', 30000, 289, 'yes', '2019-10-30 05:31:35', '2019-10-29 22:31:35'),
+(2035, 1105, 'Beras Angsa', 'padi', 'beras.png', 7000, 30, 'no', '2019-10-27 23:52:32', '2019-10-27 23:52:32'),
+(2623, 3, 'Tebu Manis Bat', 'tebu', 'Makna-Kerata-Basa-Tebu-Anteb-ing-Kalbu-Kemantapan-dalam-Hati.jpg', 16500, 500, 'yes', '2019-10-30 06:03:52', '2019-10-29 23:03:52'),
+(3040, 3, 'Beras Jati', 'padi', '082527400_1516006585-PILIH_GABAH_TERBAIK-Muhamad_Ridlo.jpeg', 5000, 685, 'yes', '2019-10-30 04:32:20', '2019-10-29 21:32:20'),
+(3657, 3, 'Beras Merah Kaum Hawa', 'padi', 'BERAS-merah-gabung-768x1024.jpg', 5000, 200, 'yes', '2019-10-28 08:27:03', '2019-10-28 01:27:03'),
 (4336, 3, 'Beras Dua Anak', 'padi', 'beras.jpg', 2000, 400, 'yes', '2019-10-26 02:58:16', '2019-10-25 19:58:16'),
-(8290, 3, 'Beras Kualitas Tersuper', 'padi', 'images.jpeg', 50000, 425, 'no', '2019-10-24 00:27:58', '2019-10-23 17:27:58'),
+(7541, 3, 'Kedelai Untuk Obat', 'kedela', '033599000_1521707402-Konsumsi-Kedelai-Berlebih-Akibatkan-Penis-Kecil-By-Madlen-shutterstock.jpg', 21000, 320, 'no', '2019-10-28 01:40:52', '2019-10-28 01:40:52'),
+(8206, 3, 'Tembakau Mantap', 'tembakau', 'berita_valid1503549531.jpg', 5000, 500, 'yes', '2019-10-30 06:03:56', '2019-10-29 23:03:56'),
+(8290, 3, 'Beras Kualitas Tersuper', 'padi', 'images.jpeg', 50000, 442, 'yes', '2019-10-30 07:04:48', '2019-10-30 00:04:48'),
 (9934, 3, 'Tebu Manis Banget', 'tebu', 'goaceh_hp8kh_31427.jpg', 5000, 275, 'no', '2019-10-24 00:33:23', '2019-10-23 17:29:43');
 
 -- --------------------------------------------------------
@@ -212,7 +243,7 @@ INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `passwo
 (5750, 'petani', 'name1', 'name1@gmail.com', NULL, '$2y$10$C0Tp85id9aAkWT56NhS7W.6RztNWXqq57Ke5dTGKnxiVGQol/HnXa', NULL, '2019-10-24 11:15:18', '2019-10-24 11:15:18'),
 (9040, 'petani', 'Maulana Rifky', 'mr@gmail.com', NULL, '$2y$10$8DdowXv8RXIPwQw3JmkzsOJv.mM00sCanyCHG7H.H/H55RBEO.l/m', NULL, '2019-10-23 05:46:39', '2019-10-23 05:46:39'),
 (9328, 'petani', 'Basril Fadh', 'bfa@gmail.com', NULL, '$2y$10$n8FGypOJ955i2bfPhr8WweLAFQ9aEL31q/0QXvMeWXWtyxGFSWztK', NULL, '2019-10-23 05:47:39', '2019-10-23 05:47:39'),
-(9329, 'mitra', 'Titania', 'tania@gmail.com', NULL, '$2y$10$y67VMuEB62WskDzl6j5e0e4MA3txpwUJVwwxPuaoF.9OGb83/L6sy', 'U6GpVwuBjq7qCRnCQ44jII7XxsXPvAqW6ewrDYVi8xGUjP9qy0dlBFFrIzFf', '2019-10-23 16:28:19', '2019-10-23 16:28:19'),
+(9329, 'mitra', 'Titania', 'tania@gmail.com', NULL, '$2y$10$y67VMuEB62WskDzl6j5e0e4MA3txpwUJVwwxPuaoF.9OGb83/L6sy', 'ApwdvR9iN4W3Yq9MipfddpS7MRskWiYws7zeihDBzRoBAkANvWLg9Vm29kMZ', '2019-10-23 16:28:19', '2019-10-23 16:28:19'),
 (9330, 'mitra', 'Ahmad Rizky', 'bila@gmail.com', NULL, '$2y$10$YO5B4eqkPjoWLejk6qkbYei7s0H51igXiSsA/Hq7mOtrZbASlWvla', NULL, '2019-10-24 10:33:05', '2019-10-24 10:33:05'),
 (10217, 'petani', 'Bagus Gala', 'bgs@gmail.com', NULL, '$2y$10$HBN8ZdOe.Y1UxETyYydE9.q2ozy/It26EG5.oAREcnq0eee8YPmOe', NULL, '2019-10-25 20:15:17', '2019-10-25 20:15:17'),
 (12275, 'petani', 'Aziz', 'Aziz@gmail.com', NULL, '$2y$10$OceN1LsOFJ6Xw7roGz.Tl.WS8rZrhvj/HJYMDJ6vgTu80Br2Eq/sG', NULL, '2019-10-27 07:01:13', '2019-10-27 07:01:13'),
@@ -246,7 +277,16 @@ ALTER TABLE `password_resets`
 -- Indexes for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  ADD PRIMARY KEY (`id_pembelian`);
+  ADD PRIMARY KEY (`id_pembelian`),
+  ADD KEY `mitra_id` (`mitra_id`),
+  ADD KEY `produk_id` (`produk_id`);
+
+--
+-- Indexes for table `pembelian_unverifed`
+--
+ALTER TABLE `pembelian_unverifed`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pembelian_id` (`pembelian_id`);
 
 --
 -- Indexes for table `petani`
@@ -288,7 +328,13 @@ ALTER TABLE `mitra`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=703560;
+  MODIFY `id_pembelian` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=915421;
+
+--
+-- AUTO_INCREMENT for table `pembelian_unverifed`
+--
+ALTER TABLE `pembelian_unverifed`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=750134;
 
 --
 -- AUTO_INCREMENT for table `petani`
@@ -311,6 +357,19 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `pembelian`
+--
+ALTER TABLE `pembelian`
+  ADD CONSTRAINT `pembelian_ibfk_1` FOREIGN KEY (`mitra_id`) REFERENCES `mitra` (`id`),
+  ADD CONSTRAINT `pembelian_ibfk_2` FOREIGN KEY (`produk_id`) REFERENCES `produk` (`id`);
+
+--
+-- Constraints for table `pembelian_unverifed`
+--
+ALTER TABLE `pembelian_unverifed`
+  ADD CONSTRAINT `pembelian_unverifed_ibfk_1` FOREIGN KEY (`pembelian_id`) REFERENCES `pembelian` (`id_pembelian`);
 
 --
 -- Constraints for table `petani`

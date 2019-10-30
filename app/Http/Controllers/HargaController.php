@@ -23,7 +23,7 @@ class HargaController extends Controller
             ->get();
 
         $kedelai = \App\Produk::where('isverify','=','no')
-            ->where('jenis_komoditas','=','kedelai')
+            ->where('jenis_komoditas','=','kedela')
             ->get(); 
 
         return view('verify.index', compact('semua','tebu','tembakau','kedelai','padi'));    

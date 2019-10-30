@@ -16,4 +16,8 @@ class Pembayaran extends Model
          }
          return asset('bukti_tf/'.$this->gambar);
       }
+    public function pembelianUnverified()
+      {
+      	return $this->hasOne('App\PembelianUnverified');
+      }  
 }

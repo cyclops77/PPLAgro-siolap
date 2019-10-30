@@ -68,6 +68,10 @@ Route::get('/sedang-mengirim','PengirimanController@sedangkirim');
 
 Route::post('/kirim-barang-ini-ini','PengirimanController@kirimBarang');
 
+Route::get('/refresh-transaksi','BarangController@refresh');
+
+Route::post('/kembalikan-stock-pemesanan','BarangController@refreshNow');
+
 });		
 
 Route::group(['middleware' => ['auth','checkRole:mitra']], function(){
