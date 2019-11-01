@@ -60,6 +60,8 @@ Route::get('/verif-transaksi','PembayaranController@LinkAcc');
 
 Route::post('/verif-bukti-tf-barang','PembayaranController@AccUploadBukti');
 
+Route::post('/jangan-verif-bukti-tf-barang','PembayaranController@DecUploadBukti');
+
 Route::get('/kirim-barang','PengirimanController@index');
 
 Route::get('/riwayat-pembelian','PengirimanController@riwayat');
@@ -95,5 +97,7 @@ Route::get('/info-saya','MitraController@show');
 Route::get('/sedang-dikirim','PengirimanController@sedangDiKirim');
 
 Route::post('/acc-barang-sudah-masuk', 'PengirimanController@barangSampe');
+
+Route::get('/notifikasi','NotifikasiController@index');
 
 });	

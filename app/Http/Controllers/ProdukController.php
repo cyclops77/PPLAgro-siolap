@@ -61,7 +61,7 @@ class ProdukController extends Controller
 
         // dd($userID);
 
-    	return redirect('/produk');	
+    	return redirect()->back()->with('sukses','berhasil memasarkan produk');	
     }
     public function edit($id)
     {
@@ -92,7 +92,7 @@ class ProdukController extends Controller
                    'stock' => $req->stock,
                    'gambar' => $nama_Gbr,
                 ]);
-            return redirect('/produk');    
+            return redirect('/produk')->with('sukses','berhasil mengedit produk');    
         }else{
             return redirect()->back();
         }

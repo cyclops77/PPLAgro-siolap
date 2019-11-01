@@ -5,6 +5,16 @@ Pasarkan Produk
 @stop
 
 @section('content')
+@if(session('sukses'))
+<div class="alert alert-success" >
+{{session('sukses')}}
+</div>
+@endif
+@if(session('gagal'))
+<div class="alert alert-danger" >
+{{session('gagal')}}
+</div>
+@endif
 <div class="col-md-6 offset-3">
     <div class="card">
         <div class="card-header">Edit Barang</div>

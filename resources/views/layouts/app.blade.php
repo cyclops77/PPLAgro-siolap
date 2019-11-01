@@ -85,13 +85,9 @@ SIOLAP
 </li>
 
 
-
-
-
-
-
-
-
+<li class="nav-item" style="display:{{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/notifikasi">Notif<span class="badge badge-pill badge-danger ml-1">
+    @yield('jumlah_notif')
+</span></a></li>
 <li class="nav-item" style="display:{{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/outlets">Info Saya</a></li>
 <li class="nav-item" style="display:{{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/status-barang">Status</a></li>
 <li class="nav-item" style="display: {{Auth::user()->role=="admin" ? "block" : "none"}}">

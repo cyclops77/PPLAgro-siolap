@@ -91,6 +91,9 @@ class PembayaranController extends Controller
     {
         $bayar = \App\Pembayaran::whereNotNull('bukti_tf')
             ->where('status_bayar','=','Belum Bayar')
+            ->whereNotIn('id_pembelian',function($query) {
+              $query->select('pembelian_id')->from('pembelian_unverifed');
+            })
             ->get();
         return view('pembayaran.verif',compact('bayar'));
     }
@@ -102,17 +105,35 @@ class PembayaranController extends Controller
 
         $stok = ($AAproduk->stock) - ($req->jumlah);
 
-        // $produk = \App\Produk::where('id','=',$pp->produk_id)
-        //     ->update([
-        //         'stock' => $stok,
-        //     ]);
-
-
-
         \App\Pembayaran::where('id_pembelian','=',$req->id_pembelian)
             ->update([
                 'status_bayar' => 'Sudah Bayar',
             ]);
-        return redirect('/verif-transaksi');    
+        return redirect()->back()->with('sukses','Anda berhasil menolak transaksi');    
+    }
+    public function DecUploadBukti(Request $req)
+    {
+        if (empty($req->keterangan)) {
+            return redirect()->back()->with('gagal','Anda harus memilih alasan');
+        }else{
+        $Pembelian = \App\Pembayaran::where('id_pembelian','=',$req->id_pembelian)
+            ->first();
+        $thisBarang = \App\Produk::where('id','=',$Pembelian->produk_id)
+            ->first();
+
+        $kembali = $Pembelian->jumlah + $thisBarang->stock;
+
+        \App\Produk::where('id','=',$Pembelian->produk_id)
+            ->update([
+                'stock' => $kembali,
+            ]);
+        $un = new \App\PembelianUnverified;
+        $un->id = mt_rand(100000,999999);
+        $un->pembelian_id = $req->id_pembelian;
+        $un->keterangan = $req->keterangan;
+        $un->save();
+
+        return redirect()->back()->with('sukses','Anda berhasil menolak transaksi');
+    }
     }
 }

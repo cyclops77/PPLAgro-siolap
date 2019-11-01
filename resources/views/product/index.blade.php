@@ -5,6 +5,17 @@ Produk Saya
 @stop
 
 @section('content')
+@if(session('sukses'))
+<div class="alert alert-success" >
+{{session('sukses')}}
+</div>
+@endif
+@if(session('gagal'))
+<div class="alert alert-danger" >
+{{session('gagal')}}
+</div>
+@endif
+
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Semua</a>
