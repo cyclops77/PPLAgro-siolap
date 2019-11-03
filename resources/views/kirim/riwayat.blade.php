@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('judul')
 Status Pembayaran
 @stop
@@ -18,7 +20,7 @@ Status Pembayaran
     		<th>Total Pembayaran</th>
     		<th>Pengiriman</th>
     		<th>Penerimaan</th>
-
+            <th>Detail</th>
     	</thead>
     	<tbody>
     		@php
@@ -33,7 +35,8 @@ Status Pembayaran
     			<td>{{$p->harga_total}}</td>
     			<td>{{$p->status_terkirim}}</td>
     			<td>{{$p->status_terima}}</td>
-    		</tr>
+    		    <td><a href="/detail-pengiriman/{{$p->mitra_id}}" class="btn btn-sm btn-dark">detail</a></td>
+            </tr>
 			@endforeach
     	</tbody>
     </table>

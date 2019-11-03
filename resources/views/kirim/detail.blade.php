@@ -1,9 +1,24 @@
 @extends('layouts.app')
 
+
+
+@section('judul')
+Status Pembayaran
+@stop
+
 @section('content')
-<div class="card">
-   <div id="mapid"></div>
-</div>
+
+<div class="col-md-12">
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/riwayat-pembelian')}}">Riwayat Pengiriman</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Detail Lokasi</li>
+  </ol>
+</nav>	
+<div id="mapid"></div>
+</div>	
 
 @section('styles')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
@@ -23,15 +38,14 @@
     crossorigin=""></script>
 
 <script>
-    
-    var mymap = L.map('mapid').setView([-8.241614827740, 113.59967350959], 12);
+    var mymap = L.map('mapid').setView([{{$detail->latitude}}, {{$detail->longitude}}], 16);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mymap);
 
-    L.marker([-8.241614827740, 113.59967350959]).addTo(mymap)
-        .bindPopup('<img src="product_image/082527400_1516006585-PILIH_GABAH_TERBAIK-Muhamad_Ridlo.jpeg" style="width: 200px; "><br><b>Kantor Pusat SIOLAP</b><br> Rambipuji')
+    L.marker([{{$detail->latitude}}, {{$detail->longitude}}]).addTo(mymap)
+        .bindPopup('<b>{{$detail->name}}</b><br> {{$detail->address}} <br> Easily customizable')
 	    .openPopup();
 
 	// L.marker([-8.225082205615, 113.57803344726]).addTo(mymap)

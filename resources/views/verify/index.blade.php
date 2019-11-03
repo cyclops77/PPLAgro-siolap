@@ -57,7 +57,28 @@ Produk Saya
         </button>
       </div>
       <div class="modal-body">
-        ...
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="cek" id="checkbox" value="AA">
+  <label class="form-check-label" for="exampleRadios1">
+    Harga tidak sesuai
+  </label>
+  <input type="text" class="form-control" id="a" name="a">
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="cek" id="bbb" value="BB">
+  <label class="form-check-label" for="exampleRadios1">
+    Harga tidak sesuai
+  </label>
+  <input type="text" class="form-control" id="b" name="a">
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="cek" id="ccc" value="CC">
+  <label class="form-check-label" for="exampleRadios1">
+    Harga tidak sesuai
+  </label>
+  <input type="text" class="form-control" id="c" name="a">
+</div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -163,4 +184,33 @@ Produk Saya
 
   </div>
 </div>
+@stop
+
+@section('js')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#a").attr('disabled',true);
+    $("#b").attr('disabled',true);
+    $("#c").attr('disabled', true);
+
+    $('input:radio[name="cek"]').change(
+      function(){
+        if ($(this).is(':checked') && $(this).val() == 'AA') {
+            $("#a").attr('disabled',false);
+            $("#b").attr('disabled',true);
+            $("#c").attr('disabled', true);
+        }else if ($(this).is(':checked') && $(this).val() == 'BB') {
+            $("#a").attr('disabled',true);
+            $("#b").attr('disabled',false);
+            $("#c").attr('disabled', true);
+        }else if ($(this).is(':checked') && $(this).val() == 'CC') {
+            $("#a").attr('disabled',true);
+            $("#b").attr('disabled',true);
+            $("#c").attr('disabled', false);
+        }
+    });
+    
+  });
+</script>
 @stop

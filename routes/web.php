@@ -66,6 +66,8 @@ Route::get('/kirim-barang','PengirimanController@index');
 
 Route::get('/riwayat-pembelian','PengirimanController@riwayat');
 
+Route::get('/detail-pengiriman/{id}','PengirimanController@detailKirim');
+
 Route::get('/sedang-mengirim','PengirimanController@sedangkirim');
 
 Route::post('/kirim-barang-ini-ini','PengirimanController@kirimBarang');

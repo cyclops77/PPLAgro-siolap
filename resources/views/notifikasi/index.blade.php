@@ -4,22 +4,24 @@
 Notifikasi 
 @stop
 
-@section('jumlah_notif')
-{{$lol->count()}}
-@stop
+
 
 @section('content')
 <div class="col-md-12">
 <div class="row">
-	<div class="col-md-2">
+	<div class="col-md-3">
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Semua</a>
-  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Telat Bayar</a>
-  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Teridentifikasi Edit</a>
+  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Semua ( {{$lol->count()}} )
+<!-- <span class="badge badge-pill badge-danger ml-1">
+    
+</span> -->
+  </a>
+  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Telat Bayar ( {{$telatBayar->count()}} )</a>
+  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Teridentifikasi Edit ( {{$editan->count()}} )</a>
   <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
 </div>
 </div>
-<div class="col-md-10">
+<div class="col-md-9">
 <div class="tab-content" id="v-pills-tabContent">
   <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 	<table class="table table-stripped table-hover">

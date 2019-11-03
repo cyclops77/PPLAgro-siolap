@@ -79,4 +79,8 @@ class Outlet extends Model
 
         return $mapPopupContent;
     }
+    public function namaMitra()
+    {
+        return $this->hasOne('App\User');
+    }
 }

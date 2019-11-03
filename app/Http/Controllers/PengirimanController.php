@@ -19,12 +19,22 @@ class PengirimanController extends Controller
 
     	return view('kirim.index', compact('BayarAja','sudahTerima'));	
     }
-    public function riwayat($value='')
+    public function riwayat()
     {
-		$sudahTerima = \App\Pembayaran::where('status_terima','=','Sudah Terima')
+		$sudahTerima = \App\Pembayaran::select('*')
+            ->join('produk','produk.id','=','pembelian.produk_id')
+            ->where('status_terima','=','Diterima')
     		->get();	
 
     	return view('kirim.riwayat', compact('sudahTerima'));
+    }
+    public function detailKirim($id)
+    {
+        $detail = \App\Pembayaran::select('*')
+            ->join('mitra','mitra.id','=','pembelian.mitra_id')
+            ->where('id','=',$id)
+            ->first();
+        return view('kirim.detail', compact('detail'));
     }
     public function kirimBarang(Request $req)
     {
