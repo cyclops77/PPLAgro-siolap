@@ -63,7 +63,7 @@ class BarangController extends Controller
         $b->terakhir = date('Y-m-d H:i:s', strtotime('next day'));
         $b->save();   
 
-        return redirect('/status-barang');
+        return redirect('/pembayaran');
     }
     public function refresh()
     {
@@ -83,7 +83,7 @@ class BarangController extends Controller
             $isEmpty = "yes";
         }else{
             $isEmpty = "no";
-        $pembayaranTelat = \App\Pembayaran::select('*')
+            $pembayaranTelat = \App\Pembayaran::select('*')
             ->join('produk','produk.id','=','pembelian.produk_id')
             ->where('status_bayar','=','Belum Bayar')
             ->where('terakhir', '<', $now)

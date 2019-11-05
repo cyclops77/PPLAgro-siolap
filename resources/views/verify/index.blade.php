@@ -37,12 +37,11 @@ Produk Saya
       <input type="submit" class="btn btn-primary float-right" style="display: {{$mp->isverify=="no" ? "block" : "none"}}" value="Verifikasi">
     </form>
 
-
+  <a href="/jangan-verifikasi/{{$mp->id}}" class="btn btn-danger float-left">Tolak</a>
     
-    <form method="POST" action="/jangan-verifikasi-barang-ini">
+    <!-- <form method="POST" action="/jangan-verifikasi-barang-ini">
             {{ csrf_field() }}
       <input type="hidden" value="{{$mp->id}}" name="idnya">
-      <!-- <input type="submit" class="btn btn-danger float-left" style="display: {{$mp->isverify=="no" ? "block" : "none"}}" value="Tolak"> -->
       <button type="button" class="btn btn-danger float-left" data-toggle="modal" data-target="#exampleModal{{$mp->id}}">
       Tolak
     </button>
@@ -60,34 +59,34 @@ Produk Saya
 <div class="form-check">
   <input class="form-check-input" type="radio" name="cek" id="checkbox" value="AA">
   <label class="form-check-label" for="exampleRadios1">
-    Harga tidak sesuai
+    Harga tidak sesuai, harga pasar yaitu
   </label>
-  <input type="text" class="form-control" id="a" name="a">
+  <input type="text" class="form-control" id="a" name="keterangan">
 </div>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="cek" id="bbb" value="BB">
   <label class="form-check-label" for="exampleRadios1">
-    Harga tidak sesuai
   </label>
-  <input type="text" class="form-control" id="b" name="a">
+    Foto kurang jelas
+  <input type="text" class="form-control" id="b" name="keterangan">
 </div>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="cek" id="ccc" value="CC">
   <label class="form-check-label" for="exampleRadios1">
-    Harga tidak sesuai
+    Foto tidak sesuai
   </label>
-  <input type="text" class="form-control" id="c" name="a">
+  <input type="text" class="form-control" id="c" name="keterangan">
 </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-    </form>
+    </form> -->
     <br>
   </div>
 </div>
@@ -186,31 +185,3 @@ Produk Saya
 </div>
 @stop
 
-@section('js')
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#a").attr('disabled',true);
-    $("#b").attr('disabled',true);
-    $("#c").attr('disabled', true);
-
-    $('input:radio[name="cek"]').change(
-      function(){
-        if ($(this).is(':checked') && $(this).val() == 'AA') {
-            $("#a").attr('disabled',false);
-            $("#b").attr('disabled',true);
-            $("#c").attr('disabled', true);
-        }else if ($(this).is(':checked') && $(this).val() == 'BB') {
-            $("#a").attr('disabled',true);
-            $("#b").attr('disabled',false);
-            $("#c").attr('disabled', true);
-        }else if ($(this).is(':checked') && $(this).val() == 'CC') {
-            $("#a").attr('disabled',true);
-            $("#b").attr('disabled',true);
-            $("#c").attr('disabled', false);
-        }
-    });
-    
-  });
-</script>
-@stop

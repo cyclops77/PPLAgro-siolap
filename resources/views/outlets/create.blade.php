@@ -25,7 +25,7 @@ Buat Akun Petani
                         {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
-                        <label for="address" class="control-label">Ancer - ancer</label>
+                        <label for="address" class="control-label">Lokasi Terkini</label>
                         <textarea id="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" rows="4">{{ old('address') }}</textarea>
                         {!! $errors->first('address', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>

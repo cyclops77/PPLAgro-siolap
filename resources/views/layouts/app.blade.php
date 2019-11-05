@@ -61,7 +61,7 @@ SIOLAP
 <li class="nav-item" style="display:{{Auth::user()->role=="admin" ? "block" : "none"}}"><a class="nav-link" href="/kirim-barang">Pengiriman</a></li>  
 <li class="nav-item" style="display:{{Auth::user()->role=="admin" ? "block" : "none"}}"><a class="nav-link" href="/akun-petani">Akun Petani</a></li>  
 <li class="nav-item" style="display:{{Auth::user()->role=="petani" ? "block" : "none"}}"><a class="nav-link" href="/pasarkan-produk">Pasarkan Produk Saya</a></li>    
-
+<li class="nav-item" style="display:{{Auth::user()->role=="petani" ? "block" : "none"}}"><a class="nav-link" href="/notifikasi-pemasaran">Notifikasi</a></li>   
 <li class="nav-item" style="display: {{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/pembayaran">Pembayaran</a></li>
 <li class="nav-item" style="display:{{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/barang">Barang</a></li>
 <!-- <li class="nav-item" style="display:{{Auth::user()->role=="admin" ? "block" : "none"}}"><a class="nav-link" href="/verif-transaksi">Transaksi</a></li> -->
@@ -87,9 +87,7 @@ SIOLAP
 </li>
 
 
-<li class="nav-item" style="display:{{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/notifikasi">Notif<span class="badge badge-pill badge-danger ml-1">
-    @yield('jumlah_notif')
-</span></a></li>
+<li class="nav-item" style="display:{{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/notifikasi">Notif</a></li>
 <li class="nav-item" style="display:{{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/outlets">Info Saya</a></li>
 <li class="nav-item" style="display:{{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/status-barang">Status</a></li>
 <li class="nav-item" style="display: {{Auth::user()->role=="admin" ? "block" : "none"}}">

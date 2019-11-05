@@ -46,6 +46,8 @@ Route::get('/index-rekom','RekomendasiController@getCuaca');
 
 Route::post('/hitung-rekomendasi-penanaman','HitungRekomendasiController@perhitungan');
 
+Route::get('/notifikasi-pemasaran','NotifikasiController@notifPetani');
+
 });	
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function(){
@@ -56,9 +58,13 @@ Route::get('/verif-harga','HargaController@index');
 
 Route::post('/verifikasi-barang-ini','HargaController@verifNow');
 
+Route::post('/jangan-verifikasi-barang-ini','HargaController@DontVerif');
+
 Route::get('/verif-transaksi','PembayaranController@LinkAcc');
 
 Route::post('/verif-bukti-tf-barang','PembayaranController@AccUploadBukti');
+
+Route::get('/jangan-verifikasi/{id}','PembayaranController@routeDisAcc');
 
 Route::post('/jangan-verif-bukti-tf-barang','PembayaranController@DecUploadBukti');
 

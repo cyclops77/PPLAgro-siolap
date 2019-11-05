@@ -41,7 +41,7 @@ Kirim Barang
     			<td>{{$p->status_terkirim}}</td>
     			<td>{{$p->status_terima}}</td>
                 <td>
-                    <a href="/outlets/{{$p->mitra_id}}" class="btn btn-sm btn-dark">Lihat</a>
+                    <a href="/detail-pengiriman/{{$p->mitra_id}}" class="btn btn-sm btn-dark">Lihat</a>
                 </td>
                 <td>
                     <form method="POST" action="/kirim-barang-ini-ini">

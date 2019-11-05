@@ -36,4 +36,27 @@ class HargaController extends Controller
     		]);
     	return redirect()->back();	
     }
+    public function DontVerif(Request $req)
+    {
+        \App\Produk::where('id','=',$req->idnya)
+            ->update([
+                'isverify' => 'repeat',
+            ]);
+
+        if ($req->cek == "AA") {
+            $kategori = "Harga tidak sesuai";
+        }else if ($req->cek == "BB") {
+            $kategori = "Foto kurang jelas";
+        }else if ($req->cek == "CC") {
+            $kategori = "Foto tidak sesuai";
+        }    
+
+        \App\ProdukStatus::create([
+            'id' => mt_rand(100000,999999),
+            'produk_id' => $req->idnya,
+            'kategori' => $kategori,
+            'keterangan' => $req->keterangan,
+        ]);            
+        return redirect('/verif-harga')->with('gagal','berhasil menolak barang');  
+    }
 }

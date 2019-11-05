@@ -5,7 +5,12 @@ Status Pembayaran
 @stop
 
 @section('content')
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Status Pembyaaran</li>
+  </ol>
+</nav> 
 
 <div class="card">
   <div class="card-body">

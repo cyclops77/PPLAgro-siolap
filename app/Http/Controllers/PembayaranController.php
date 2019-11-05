@@ -31,6 +31,15 @@ class PembayaranController extends Controller
 
     	if (empty($check)) {
     		$isEmpty = "yes";
+            $pembayaranWajib='';
+            $pembayaran='';
+            $pembayaranTelat='';
+            $pembayaranInvalid='';
+            $response['pembayaranWajibC']=0;
+            $response['pembayaranC']=0;
+            $response['pembayaranTelatC']=0;
+            $response['pembayaranInvalidC']=0;
+
     	}else{
 		$isEmpty = "no";
     	$pembayaran = \App\Pembayaran::select('*')
@@ -54,11 +63,20 @@ class PembayaranController extends Controller
             ->where('mitra_id','=',$mitraID->id)
             ->where('status_bayar','=','Belum Bayar')
             ->where('terakhir', '<', $now)
-            ->get();    
+            ->get(); 
 
+        $pembayaranInvalid = \App\PembelianUnverified::select('*')
+            ->join('pembelian','pembelian.id_pembelian','=','pembelian_unverifed.pembelian_id')
+            ->join('produk','produk.id','=','pembelian.produk_id')
+            ->get();            
+               
+        $response['pembayaranWajibC']=$pembayaranWajib->count();
+        $response['pembayaranC']=$pembayaran->count();
+        $response['pembayaranTelatC']=$pembayaranTelat->count();
+        $response['pembayaranInvalidC']=$pembayaranInvalid->count();
     	}
         // dd($pembayaranWajib);
-    	return view('pembayaran.statusbayar', compact('pembayaran','isEmpty','pembayaranWajib','pembayaranTelat'));
+    	return view('pembayaran.statusbayar', compact('pembayaran','isEmpty','pembayaranWajib','pembayaranTelat','pembayaranInvalid','response'));
     }
     public function LinkUploadBukti($id)
     {
@@ -135,5 +153,13 @@ class PembayaranController extends Controller
 
         return redirect()->back()->with('sukses','Anda berhasil menolak transaksi');
     }
+    }
+    public function routeDisAcc($id)
+    {
+        $pembelian = \App\Produk::select('*','produk.id as proid')
+            ->join('petani','petani.id','=','produk.petani_id')
+            ->where('produk.id','=',$id)
+            ->first();
+        return view('verify.detail',compact('pembelian'));
     }
 }

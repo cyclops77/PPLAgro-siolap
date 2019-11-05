@@ -35,4 +35,49 @@ class NotifikasiController extends Controller
 	    // dd($mitra->id);
     	return view('notifikasi.index',compact('lol','telatBayar','editan'));
     }
+    public function notifPetani()
+    {
+        $userID = Auth::user()->id;
+        $petaniID = \App\Petani::where('user_id','=',$userID)->first();
+
+      
+
+
+        $repeat = \App\ProdukStatus::select("*","produk.id as proid")
+            ->join('produk','produk.id','=','produk_status.produk_id')
+            ->where('petani_id','=',$petaniID->id)
+            ->whereIn('produk.id', function($query){
+                $query->select('produk_id')->from('produk_status');
+            })
+            ->get();
+        $repeatEdit = \App\ProdukStatus::select("*","produk.id as proid")
+            ->join('produk','produk.id','=','produk_status.produk_id')
+            ->where('produk_status.keterangan','like','%'.'Foto'.'%')
+            ->where('petani_id','=',$petaniID->id)
+            ->whereIn('produk.id', function($query){
+                $query->select('produk_id')->from('produk_status');
+            })
+            ->get();   
+
+        $repeatGj = \App\ProdukStatus::select("*","produk.id as proid")
+            ->join('produk','produk.id','=','produk_status.produk_id')
+            ->where('produk_status.keterangan','like','%'.'kurang jelas'.'%')
+            ->where('petani_id','=',$petaniID->id)
+            ->whereIn('produk.id', function($query){
+                $query->select('produk_id')->from('produk_status');
+            })
+            ->get(); 
+                
+        $repeatGbayar = \App\ProdukStatus::select("*","produk.id as proid")
+            ->join('produk','produk.id','=','produk_status.produk_id')
+            ->where('produk_status.keterangan','like','%'.'Harga'.'%')
+            ->where('petani_id','=',$petaniID->id)
+            ->whereIn('produk.id', function($query){
+                $query->select('produk_id')->from('produk_status');
+            })
+            ->get();      
+
+
+        return view('notifikasi.petani', compact('repeat','repeatGbayar','repeatEdit','repeatGj'));
+    }
 }

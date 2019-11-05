@@ -753,7 +753,7 @@ class HitungRekomendasiController extends Controller
 					$response["paramKelembaban5"] = 3;
 				}else if($response["kelembabanAVE"] >= 65 && $response["kelembabanAVE"] <= 70){
 					$response["paramKelembaban5"] = 4;
-				}else if($response["kelembabanAVE"] <= 70){
+				}else if($response["kelembabanAVE"] >= 70){
 					$response["paramKelembaban5"] = 5;
 				}
 
