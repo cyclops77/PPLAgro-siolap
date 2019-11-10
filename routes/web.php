@@ -48,6 +48,8 @@ Route::post('/hitung-rekomendasi-penanaman','HitungRekomendasiController@perhitu
 
 Route::get('/notifikasi-pemasaran','NotifikasiController@notifPetani');
 
+Route::get('/optimasi-lahan','OptimasiController@getCuaca');
+
 });	
 
 Route::group(['middleware' => ['auth','checkRole:admin']], function(){

@@ -56,6 +56,7 @@ SIOLAP
 </li>
 @else
 <!-- Authentication Links -->
+<li class="nav-item" style="display:{{Auth::user()->role=="petani" ? "block" : "none"}}"><a class="nav-link" href="/optimasi-lahan">Optimasi Lahan</a></li>  
 <li class="nav-item" style="display:{{Auth::user()->role=="petani" ? "block" : "none"}}"><a class="nav-link" href="/rekomendasi-tanam">Rekomendasi Tanam</a></li>  
 <li class="nav-item" style="display:{{Auth::user()->role=="mitra" ? "block" : "none"}}"><a class="nav-link" href="/sedang-dikirim">Sedang Dikirim</a></li>  
 <li class="nav-item" style="display:{{Auth::user()->role=="admin" ? "block" : "none"}}"><a class="nav-link" href="/kirim-barang">Pengiriman</a></li>  
