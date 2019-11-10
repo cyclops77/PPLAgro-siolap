@@ -5,11 +5,29 @@ Produk Saya
 @stop
 
 @section('content')
+@if(session('sukses'))
+<div class="alert alert-success" >
+{{session('sukses')}}
+</div>
+@endif
+@if(session('gagal'))
+<div class="alert alert-danger" >
+{{session('gagal')}}
+</div>
+@endif
+
 <div class="col-md-6 offset-3">
     <div class="card">
         <div class="card-header">Cari Rekomendasi . . .</div>
         <form method="POST" action="/hitung-rekomendasi-penanaman" accept-charset="UTF-8" enctype="multipart/form-data">
             {{ csrf_field() }}
+            <!-- DATA -->
+            <input type="hidden" value="{{$response['suhuAVE']}}" name="suhuAVE">
+            <input type="hidden" value="{{$response['kelembabanAVE']}}" name="kelembabanAVE">
+            <input type="hidden" value="{{$response['cuacaAngkaTotal']}}" name="cuacaAngkaTotal">
+            <input type="hidden" value="{{$response['paramCuaca']}}" name="paramCuaca">
+            
+
             <!-- PADI -->
             <input type="hidden" value="{{$response['paramCuaca']}}" name="paramCuaca">
             <input type="hidden" value="{{$response['paramSuhu']}}" name="paramSuhu">
@@ -39,7 +57,7 @@ Produk Saya
             <div class="card-body">
 			<div class="form-group">
 		    <label for="exampleFormControlSelect1">Pilih Komoditas</label>
-		    <select class="form-control" name="komoditas">
+		    <select class="form-control" name="komoditas" required>
 		      <option disabled selected>Pilih Komoditas . . . </option>
 		      <option value="padi">Padi</option>
 		      <option value="jagung">Jagung</option>
@@ -50,7 +68,7 @@ Produk Saya
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleFormControlSelect1">Pilih Jenis Tanah</label>
-		    <select class="form-control" name="tanah">
+		    <select class="form-control" name="tanah" required>
 		      <option disabled selected>Pilih Jenis Tanah . . . </option>
 		      <option value="andosol">Andosol</option>
 		      <option value="aluvial">Aluvial</option>

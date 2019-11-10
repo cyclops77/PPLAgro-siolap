@@ -358,7 +358,7 @@ class HitungRekomendasiController extends Controller
 					$response["paramKelembaban5"] = 3;
 				}else if($response["kelembabanAVE"] >= 65 && $response["kelembabanAVE"] <= 70){
 					$response["paramKelembaban5"] = 4;
-				}else if($response["kelembabanAVE"] <= 70){
+				}else if($response["kelembabanAVE"] >= 70){
 					$response["paramKelembaban5"] = 5;
 				}
 
@@ -1154,7 +1154,7 @@ class HitungRekomendasiController extends Controller
 					$response["paramKelembaban5"] = 3;
 				}else if($response["kelembabanAVE"] >= 65 && $response["kelembabanAVE"] <= 70){
 					$response["paramKelembaban5"] = 4;
-				}else if($response["kelembabanAVE"] <= 70){
+				}else if($response["kelembabanAVE"] >= 70){
 					$response["paramKelembaban5"] = 5;
 				}
 
@@ -1247,7 +1247,9 @@ class HitungRekomendasiController extends Controller
 				$response["normalisasiCuaca"] = 0.3;
 				$response["utilityCuaca"] = ($cmaxCuaca-$response["paramCuaca"])/($cmaxCuaca-$cminCuaca);
 
+
             }
+
             //==============================================///
         } else if (strcasecmp($kota->item(42)->nodeValue, "jember") == 0) {
             $response["error"] = false;
@@ -1551,7 +1553,7 @@ class HitungRekomendasiController extends Controller
 					$response["paramKelembaban5"] = 3;
 				}else if($response["kelembabanAVE"] >= 65 && $response["kelembabanAVE"] <= 70){
 					$response["paramKelembaban5"] = 4;
-				}else if($response["kelembabanAVE"] <= 70){
+				}else if($response["kelembabanAVE"] >= 70){
 					$response["paramKelembaban5"] = 5;
 				}
 
@@ -1653,9 +1655,37 @@ class HitungRekomendasiController extends Controller
 
     public function perhitungan(Request $req)
     {
+        if (empty($req->komoditas) && empty($req->tanah)) {
+            return redirect()->back()->with('gagal','Silahkan isi jenis tanah dan juga komoditas');
+        }else if (empty($req->komoditas) && !empty($req->tanah)) {
+            return redirect()->back()->with('gagal','Silahkan isi komoditas');
+        }else if (!empty($req->komoditas) && empty($req->tanah)) {
+            return redirect()->back()->with('gagal','Silahkan isi jenis Tanah');
+        }else if (!empty($req->komoditas) && !empty($req->tanah)) {
     	$cmax = 5;
     	$cmaxTanah = 5;
     	$cmin = 1;
+
+        $hasilCariK = $req->komoditas;
+        $hasilCariT = $req->tanah;
+        $hasilsuhuAVE = $req->suhuAVE;
+        $hasilcuacaAngkaTotal = $req->cuacaAngkaTotal;
+        $hasilCariT = $req->tanah;
+
+        if ($hasilcuacaAngkaTotal >= 100 && $hasilcuacaAngkaTotal <= 150) {
+            $cuaca = "Cerah"; 
+        }else if ($hasilcuacaAngkaTotal > 150 && $hasilcuacaAngkaTotal <= 200) {
+            $cuaca = "Cerah Berawan"; 
+        }else if ($hasilcuacaAngkaTotal > 200 && $hasilcuacaAngkaTotal <= 300) {
+            $cuaca = "Udara Kabur"; 
+        }else if ($hasilcuacaAngkaTotal > 300 && $hasilcuacaAngkaTotal <= 400) {
+            $cuaca = "Kabut"; 
+        }else if ($hasilcuacaAngkaTotal > 400 && $hasilcuacaAngkaTotal <= 500) {
+            $cuaca = "Berawan"; 
+        }else if ($hasilcuacaAngkaTotal > 500) {
+            $cuaca = "Hujan"; 
+        }
+
 
     	$normalisasiSuhu = 0.2;
     	$normalisasiKelembaban = 0.1;
@@ -1724,7 +1754,10 @@ class HitungRekomendasiController extends Controller
     		$output = "Berhasil";
     	}
     		// dd($output);
+        $now = date('Y-m-d H:i:s');
 
-    	return view('rekomendasi.hasilcari',compact('output','hasilAkhir'));
+    	return view('rekomendasi.hasilcari',compact('output','hasilAkhir','hasilCariK','hasilCariT','now','hasilsuhuAVE','cuaca'));
     }
+}
+    
 }
