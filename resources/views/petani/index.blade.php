@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('judul')
-Status Pembayaran
+Data Petani
 @stop
 
 @section('content')
@@ -13,7 +13,9 @@ Status Pembayaran
      
       <div class="modal-body">
         <div class="card">
-        
+        <div class="card-title">
+            <h3 class="text-center">Pendaftaran Akun Petani</h3>
+        </div>
 
         <div class="card-body">
             <form method="POST" action="/postregister">
@@ -71,13 +73,13 @@ Status Pembayaran
   </div>
 </div>
 
-@if(session('sukses'))
+    @if(session('sukses'))
     <div class="alert alert-success" >
       {{session('sukses')}}
     </div>
     @endif
     @if(session('gagal'))
-    <div class="alert alert-success" >
+    <div class="alert alert-danger" >
       {{session('gagal')}}
     </div>
     @endif
@@ -113,6 +115,7 @@ Status Pembayaran
 			@endforeach
     	</tbody>
     </table>
+            <div class="justify-center">{{ $petani->links() }}</div>
   </div>
 </div>
 @stop

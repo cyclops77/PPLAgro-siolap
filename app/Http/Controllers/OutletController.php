@@ -49,28 +49,41 @@ class OutletController extends Controller
      */
     public function store(Request $request)
     {
-       
+        if ($request->password == $request->password2) {
+        
+            if (filter_var($request->name, FILTER_VALIDATE_INT)) {
+                return redirect()->back()->with('gagal','Nama harus berupa Huruf');
+            }else{
+            $cek = \App\User::where('email','=',$request->email)
+                ->first();
+            if (empty($cek)) {    
+            $newOutlet = $request->validate([
+                'name'      => 'required|max:60',
+                'address'   => 'nullable|max:255',
+                'latitude'  => 'nullable|required_with:longitude|max:15',
+                'longitude' => 'nullable|required_with:latitude|max:15',
+            ]);
 
-        $newOutlet = $request->validate([
-            'name'      => 'required|max:60',
-            'address'   => 'nullable|max:255',
-            'latitude'  => 'nullable|required_with:longitude|max:15',
-            'longitude' => 'nullable|required_with:latitude|max:15',
-        ]);
+            $u = new \App\User;
+            $u->id = mt_rand(1000,9999);
+            $newOutlet['user_id'] = $u->id;
+            $u->role = 'mitra';
+            $u->email = $request->email;
+            $u->password = bcrypt($request->password);
+            $u->name = $request->name;                   
 
-        $u = new \App\User;
-        $u->id = mt_rand(1000,9999);
-        $newOutlet['user_id'] = $u->id;
-        $u->role = 'mitra';
-        $u->email = $request->email;
-        $u->password = bcrypt($request->password);
-        $u->name = $request->name;                   
+            $u->save();
 
-        $u->save();
+            $outlet = Outlet::create($newOutlet);
 
-        $outlet = Outlet::create($newOutlet);
-
-        return redirect('/login');
+            return redirect('/login');
+            }else{
+                return redirect()->back()->with('gagal','Email telah digunakan, cobalah email lain');
+                }    
+            }
+        }else{
+            return redirect()->back()->with('gagal','Konfirmasi Password tidak sesuai');
+        }
     }
 
     /**

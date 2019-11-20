@@ -41,6 +41,12 @@ class ProdukController extends Controller
         $userID = Auth::user()->id;
         $petaniID = \App\Petani::where('user_id','=',$userID)->first();
 
+        $a1 = ($req->file('gambar'))->getClientOriginalName();
+
+        if ((strpos($a1, "jpg") || strpos($a1, "jpeg") || strpos($a1, "png"))===false) {
+            return redirect()->back()->with('gagal','Foto Barang harus berupa PNG, JPEG, JPG');
+        }else{
+
         $tempatfile = ('product_image');
 
         $gbr = $req->file('gambar');
@@ -63,6 +69,7 @@ class ProdukController extends Controller
 
     	return redirect()->back()->with('sukses','berhasil memasarkan produk');	
     }
+    }
     public function edit($id)
     {
 
@@ -76,25 +83,43 @@ class ProdukController extends Controller
         $thisBarang = \App\Produk::where('id','=',$req->barangID)->first();
 
         if (!empty($req->file('gambar'))) {
-            $gbr = $req->file('gambar');
-            $nama_Gbr = $gbr->getClientOriginalName();
-            $gbr->move($tempatfile, $nama_Gbr);
+            //IF GAMBAR NOT EMPTY
+            $a1 = ($req->file('gambar'))->getClientOriginalName();
+
+            if ((strpos($a1, "jpg") || strpos($a1, "jpeg") || strpos($a1, "png"))===false) {
+            return redirect()->back()->with('gagal','Foto Barang harus berupa PNG, JPEG, JPG');
+            }
+            else{
+                $gbr = $req->file('gambar');
+                $nama_Gbr = $gbr->getClientOriginalName();
+                $gbr->move($tempatfile, $nama_Gbr);
+                if ($req->barangID == $thisBarang->id) {
+                \App\Produk::where('id','=',$req->barangID)
+                    ->update([
+                       'nama_barang' => $req->nama,
+                       'jenis_komoditas' => $req->jenis_komoditas,
+                       'harga_barang' => $req->harga,
+                       'stock' => $req->stock,
+                       'gambar' => $nama_Gbr,
+                    ]);
+                return redirect('/produk')->with('sukses','berhasil mengedit produk');    
+                }
+            else{
+                return redirect()->back()->with('gagal','terdapat kesalahan autentikasi ID');
+            }
+        }
         }else{
-            $nama_Gbr = $thisBarang->gambar;
+            //IF GAMBAR EMPTY
+            \App\Produk::where('id','=',$req->barangID)
+                    ->update([
+                       'nama_barang' => $req->nama,
+                       'jenis_komoditas' => $req->jenis_komoditas,
+                       'harga_barang' => $req->harga,
+                       'stock' => $req->stock,
+                    ]);
+            return redirect()->back()->with('sukses','berhasil mengubah data');        
         }
 
-        if ($req->barangID == $thisBarang->id) {
-            \App\Produk::where('id','=',$req->barangID)
-                ->update([
-                   'nama_barang' => $req->nama,
-                   'jenis_komoditas' => $req->jenis_komoditas,
-                   'harga_barang' => $req->harga,
-                   'stock' => $req->stock,
-                   'gambar' => $nama_Gbr,
-                ]);
-            return redirect('/produk')->with('sukses','berhasil mengedit produk');    
-        }else{
-            return redirect()->back();
-        }
+        
     }
 }

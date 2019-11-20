@@ -7,6 +7,17 @@ Buat Akun Petani
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-9">
+
+@if(session('sukses'))
+<div class="alert alert-success" >
+{{session('sukses')}}
+</div>
+@endif
+@if(session('gagal'))
+<div class="alert alert-danger" >
+{{session('gagal')}}
+</div>
+@endif
         <div class="card">
             <div class="card-header">Buat Akun Petani</div>
             <form method="POST" action="{{ route('outlets.store') }}" accept-charset="UTF-8">
@@ -21,7 +32,7 @@ Buat Akun Petani
                     </div>
                     <div class="form-group">
                         <label for="name" class="control-label">Email</label>
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email" value="{{ old('name') }}" required>
+                        <input id="name" type="email" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="email" value="{{ old('name') }}" required>
                         {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
@@ -48,6 +59,11 @@ Buat Akun Petani
                     <div class="form-group">
                         <label for="name" class="control-label">Password</label>
                         <input id="name" type="password" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="password"required>
+                        {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="control-label">Konfirmasi Password</label>
+                        <input id="name" type="password" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="password2"required>
                         {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                 </div>

@@ -40,13 +40,12 @@ Produk Saya
     <p class=""><strong>Status : {{$mp->getStatus()}}</strong></p>
     <p class=""><strong>Jenis Komoditas : {{$mp->jenis_komoditas}}</strong></p>
     <p class=""><strong>Stok Komoditas : {{$mp->stock}} </strong>Kg</p>
-    <a href="/produk/{{$mp->id}}/edit" class="btn btn-primary float-right" style="display: {{$mp->isverify=="no" ? "block" : "none"}}">Edit</a>
+    <a href="/produk/{{$mp->id}}/edit" class="btn btn-primary float-right" style="display: {{$mp->getStatus()=="Belum Terverifikasi" ? "block" : "none"}}">Edit</a>
     <br>
   </div>
 </div>
 @endforeach
 </div>	
-
   </div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
   	

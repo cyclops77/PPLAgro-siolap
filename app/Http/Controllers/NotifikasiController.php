@@ -32,8 +32,18 @@ class NotifikasiController extends Controller
     		->where('keterangan','=','Gambar teridentifikasi hasil edit')
 	    	->get();	
 
+        // $sedangKirim = \App\Pembayaran::select('*')
+        //     ->where('status_terima','=','Sedang Mengirim')
+        //     ->where('mitra_id','=',$mitra->id)
+        //     ->get();
+        $sedangKirim = \App\Pembayaran::select('*')
+            ->join('produk','produk.id','=','pembelian.produk_id')
+            ->where('status_terkirim','=','Sedang Mengirim')
+            ->where('mitra_id','=',$mitra->id)
+            ->get();    
+
 	    // dd($mitra->id);
-    	return view('notifikasi.index',compact('lol','telatBayar','editan'));
+    	return view('notifikasi.index',compact('lol','telatBayar','editan','sedangKirim'));
     }
     public function notifPetani()
     {

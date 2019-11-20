@@ -40,7 +40,7 @@ Pasarkan Produk
                     <input id="" type="number" class="form-control" name="harga" required>
                 </div>
                 <div class="form-group">
-                    <label for="name" class="control-label">Stock</label>
+                    <label for="name" class="control-label">Stok</label>
                     <input id="" type="number" class="form-control" name="stock" required>
                 </div>
                 <div class="form-group">

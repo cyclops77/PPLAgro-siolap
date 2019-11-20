@@ -20,6 +20,8 @@ class Produk extends Model
       {
       	if ($this->isverify=="no") {
       		return "Belum Terverifikasi";
-      	}return "Terverifikasi";
+      	}else if ($this->isverify=="repeat") {
+          return "Belum Terverifikasi";
+        }return "Terverifikasi";
       }  
 }

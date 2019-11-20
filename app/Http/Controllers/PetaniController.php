@@ -8,7 +8,7 @@ class PetaniController extends Controller
 {
     public function list()
     {
-    	$petani = \App\User::where('role','=','petani')->get();
+    	$petani = \App\User::where('role','=','petani')->paginate(10);
     	return view('petani.index', compact('petani'));
     }
 }

@@ -40,7 +40,7 @@ Pasarkan Produk
                     <input id="" type="number" class="form-control" name="harga"  value="{{$produk->harga_barang}}">
                 </div>
                 <div class="form-group">
-                    <label for="name" class="control-label">Stock</label>
+                    <label for="name" class="control-label">Stok</label>
                     <input id="" type="number" class="form-control" name="stock"  value="{{$produk->stock}}">
                 </div>
                 <img class="card-img-top" src="{{$produk->getAvatar()}}" alt="Card image cap" height="200px" style="border-bottom: 1px solid black">
@@ -51,7 +51,7 @@ Pasarkan Produk
                 
             </div>
             <div class="card-footer">
-                <input type="submit" value="Ubah Informasi" class="btn btn-primary">
+                <input type="submit" value="Ubah" class="btn btn-primary">
                 <a href="/produk" class="btn btn-danger float-right">{{ __('Batalkan') }}</a>
             </div>
         </form>

@@ -18,7 +18,7 @@ Status Pembayaran
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Wajib Bayar({{$response['pembayaranWajibC']}})</a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Telat Bayar({{$response['pembayaranTelatC']}})</a>
     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Semua({{$response['pembayaranC']}})</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contacts" role="tab" aria-controls="nav-contacts" aria-selected="false">Semua({{$response['pembayaranInvalidC']}})</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contacts" role="tab" aria-controls="nav-contacts" aria-selected="false">Bermasalah({{$response['pembayaranInvalidC']}})</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
