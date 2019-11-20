@@ -43,32 +43,36 @@ class ProdukController extends Controller
 
         $a1 = ($req->file('gambar'))->getClientOriginalName();
 
-        if ((strpos($a1, "jpg") || strpos($a1, "jpeg") || strpos($a1, "png"))===false) {
-            return redirect()->back()->with('gagal','Foto Barang harus berupa PNG, JPEG, JPG');
+        if (filter_var($req->nama, FILTER_VALIDATE_INT)) {
+            return redirect()->back()->with('gagal','Nama harus berupa Huruf');
         }else{
 
-        $tempatfile = ('product_image');
+            if ((strpos($a1, "jpg") || strpos($a1, "jpeg") || strpos($a1, "png"))===false) {
+                return redirect()->back()->with('gagal','Foto Barang harus berupa PNG, JPEG, JPG');
+            }else{
 
-        $gbr = $req->file('gambar');
-        $nama_Gbr = $gbr->getClientOriginalName();
-        $gbr->move($tempatfile, $nama_Gbr);
+            $tempatfile = ('product_image');
 
-        $p = new \App\Produk;
-        $p->id = mt_rand(1000,9999);
-        $p->petani_id = $petaniID->id;
-        $p->nama_barang = $req->nama;
-        $p->jenis_komoditas = $req->jenis_komoditas;
-        $p->gambar = $nama_Gbr;
-        $p->harga_barang = $req->harga;
-        $p->stock = $req->stock;
-        $p->isverify = 'no';
+            $gbr = $req->file('gambar');
+            $nama_Gbr = $gbr->getClientOriginalName();
+            $gbr->move($tempatfile, $nama_Gbr);
 
-        $p->save();
+            $p = new \App\Produk;
+            $p->id = mt_rand(1000,9999);
+            $p->petani_id = $petaniID->id;
+            $p->nama_barang = $req->nama;
+            $p->jenis_komoditas = $req->jenis_komoditas;
+            $p->gambar = $nama_Gbr;
+            $p->harga_barang = $req->harga;
+            $p->stock = $req->stock;
+            $p->isverify = 'no';
 
-        // dd($userID);
+            $p->save();
 
-    	return redirect()->back()->with('sukses','berhasil memasarkan produk');	
-    }
+            // dd($userID);
+
+        	return redirect()->back()->with('sukses','berhasil memasarkan produk');	
+        }}
     }
     public function edit($id)
     {

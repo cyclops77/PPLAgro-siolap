@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,12 +33,6 @@ SIOLAP
 </button>
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<!-- Left Side Of Navbar -->
-<!-- <ul class="navbar-nav mr-auto">
-<li class="nav-item"><a href="https://github.com/nafiesl/laravel-leaflet-example" class="btn btn-outline-primary btn-sm" target="_blank">Source code</a></li>
-</ul> -->
-
-<!-- Right Side Of Navbar -->
 <ul class="navbar-nav ml-auto">
 
 @guest
