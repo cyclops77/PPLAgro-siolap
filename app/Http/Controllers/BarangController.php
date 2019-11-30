@@ -15,6 +15,10 @@ class BarangController extends Controller
     	$padi = \App\Produk::where('isverify','=','yes')
             ->where('jenis_komoditas','=','padi')
             ->get();
+
+         $jagung = \App\Produk::where('isverify','=','yes')
+            ->where('jenis_komoditas','=','jagung')
+            ->get();
         
         $tebu = \App\Produk::where('isverify','=','yes')
             ->where('jenis_komoditas','=','tebu')
@@ -28,7 +32,7 @@ class BarangController extends Controller
             ->where('jenis_komoditas','=','kedela')
             ->get(); 
 
-    	return view('barang.index', compact('semua','tebu','tembakau','kedelai','padi'));
+    	return view('barang.index', compact('semua','tebu','tembakau','kedelai','padi','jagung'));
     }
     public function beli($id)
     {

@@ -14,7 +14,7 @@ class PembayaranController extends Controller
     	$pembayaran = \App\Pembayaran::select('*')
     		->join('produk','produk.id','=','pembelian.produk_id')
     		->where('mitra_id','=',$mitraID->id)
-    		->get();
+    		->paginate(10);
     	return view('pembayaran.index', compact('pembayaran'));
     }
     public function GakLunas()
@@ -92,18 +92,26 @@ class PembayaranController extends Controller
 
         $thisBarang = \App\Pembayaran::where('id_pembelian','=',$req->id_pembelian)->first();
 
+        
+
         if (!empty($req->file('gambar'))) {
+            $a1 = $req->file('gambar')->getClientOriginalName();
+            if ((strpos($a1, "JPG") || strpos($a1, "PNG") || strpos($a1, "jpg") || strpos($a1, "png") || strpos($a1, "jpeg") || strpos($a1, "JPEG")) == false) {
+                return redirect()->back()->with('gagal','Silahkan upload bukti berupa PNG, JPG, atau JPEG');
+            }else{
             $gbr = $req->file('gambar');
             $nama_Gbr = $gbr->getClientOriginalName();
             $gbr->move($tempatfile, $nama_Gbr);
+
+            \App\Pembayaran::where('id_pembelian','=',$req->id_pembelian)
+            	->update([
+            		'bukti_tf' => $nama_Gbr,
+            	]);
+        	return redirect('/pembayaran')->with('sukses','Berhasil melakukan upload bukti');
+            }
         }else{
-            $nama_Gbr = $thisBarang->bukti_tf;
+            return redirect()->back()->with('gagal','silahkan upload bukti terlebih dahulu');
         }
-        \App\Pembayaran::where('id_pembelian','=',$req->id_pembelian)
-        	->update([
-        		'bukti_tf' => $nama_Gbr,
-        	]);
-    	return redirect('/pembayaran');
     }
     public function LinkAcc()
     {
@@ -127,12 +135,12 @@ class PembayaranController extends Controller
             ->update([
                 'status_bayar' => 'Sudah Bayar',
             ]);
-        return redirect()->back()->with('sukses','Anda berhasil menolak transaksi');    
+        return redirect()->back()->with('sukses','Anda berhasil menerima transaksi');    
     }
     public function DecUploadBukti(Request $req)
     {
         if (empty($req->keterangan)) {
-            return redirect()->back()->with('gagal','Anda harus memilih alasan');
+            return redirect()->back()->with('sukses','Anda berhasil memverifikasi transaksi');
         }else{
         $Pembelian = \App\Pembayaran::where('id_pembelian','=',$req->id_pembelian)
             ->first();

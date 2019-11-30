@@ -62,7 +62,7 @@ class NotifikasiController extends Controller
             ->get();
         $repeatEdit = \App\ProdukStatus::select("*","produk.id as proid")
             ->join('produk','produk.id','=','produk_status.produk_id')
-            ->where('produk_status.keterangan','like','%'.'Foto'.'%')
+            ->where('produk_status.kategori','Foto tidak sesuai')
             ->where('petani_id','=',$petaniID->id)
             ->whereIn('produk.id', function($query){
                 $query->select('produk_id')->from('produk_status');
@@ -71,7 +71,7 @@ class NotifikasiController extends Controller
 
         $repeatGj = \App\ProdukStatus::select("*","produk.id as proid")
             ->join('produk','produk.id','=','produk_status.produk_id')
-            ->where('produk_status.keterangan','like','%'.'kurang jelas'.'%')
+            ->where('produk_status.kategori','like','%'.'kurang jelas'.'%')
             ->where('petani_id','=',$petaniID->id)
             ->whereIn('produk.id', function($query){
                 $query->select('produk_id')->from('produk_status');
@@ -80,14 +80,16 @@ class NotifikasiController extends Controller
                 
         $repeatGbayar = \App\ProdukStatus::select("*","produk.id as proid")
             ->join('produk','produk.id','=','produk_status.produk_id')
-            ->where('produk_status.keterangan','like','%'.'Harga'.'%')
+            ->where('produk_status.kategori','like','%'.'Harga'.'%')
             ->where('petani_id','=',$petaniID->id)
             ->whereIn('produk.id', function($query){
                 $query->select('produk_id')->from('produk_status');
             })
             ->get();      
+        $done = \App\Produk::select('*')
+            ->where('petani_id','=',$petaniID->id)
+            ->get();
 
-
-        return view('notifikasi.petani', compact('repeat','repeatGbayar','repeatEdit','repeatGj'));
+        return view('notifikasi.petani', compact('repeat','repeatGbayar','repeatEdit','repeatGj','done'));
     }
 }

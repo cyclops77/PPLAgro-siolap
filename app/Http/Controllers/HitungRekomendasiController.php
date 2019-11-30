@@ -224,15 +224,15 @@ class HitungRekomendasiController extends Controller
 				//== P A D I ==//
 
 				//== PENENTUAN PARAMETER K-1 ==//
-				if ($response["suhuAVE"] >= 21 && $response["suhuAVE"] <= 24) {
+				if ($response["suhuAVE"] >= 24 && $response["suhuAVE"] <= 30) {
 					$response["paramSuhu"] = 1;
-				}else if($response["suhuAVE"] >= 24 && $response["suhuAVE"] <= 26){
+				}else if($response["suhuAVE"] >= 21 && $response["suhuAVE"] <= 24){
 					$response["paramSuhu"] = 2;
-				}else if($response["suhuAVE"] >= 26 && $response["suhuAVE"] <= 29){
+				}else if($response["suhuAVE"] >= 30 && $response["suhuAVE"] <= 33){
 					$response["paramSuhu"] = 3;
-				}else if($response["suhuAVE"] >= 29 && $response["suhuAVE"] <= 31){
+				}else if($response["suhuAVE"] <= 21){
 					$response["paramSuhu"] = 4;
-				}else if($response["suhuAVE"] >= 31 && $response["suhuAVE"] <= 33){
+				}else if($response["suhuAVE"] >= 34){
 					$response["paramSuhu"] = 5;
 				}
 
@@ -241,85 +241,85 @@ class HitungRekomendasiController extends Controller
 				//== PENENTUAN PARAMETER K-1 ==//
 				if ($response["suhuAVE"] >= 23 && $response["suhuAVE"] <= 27) {
 					$response["paramSuhu2"] = 1;
-				}else if($response["suhuAVE"] >= 21 && $response["suhuAVE"] <= 23){
+				}else if($response["suhuAVE"] >= 19 && $response["suhuAVE"] <= 23){
 					$response["paramSuhu2"] = 2;
-				}else if($response["suhuAVE"] >= 27 && $response["suhuAVE"] <= 30){
+				}else if($response["suhuAVE"] >= 27 && $response["suhuAVE"] <= 31){
 					$response["paramSuhu2"] = 3;
-				}else if($response["suhuAVE"] >= 30 && $response["suhuAVE"] <= 34){
+				}else if($response["suhuAVE"] <= 19){
 					$response["paramSuhu2"] = 4;
-				}else if($response["suhuAVE"] >= 34 && $response["suhuAVE"] <= 40){
+				}else if($response["suhuAVE"] >= 31){
 					$response["paramSuhu2"] = 5;
 				}
 
 				//== K E D E L A I ==//
 
 				//== PENENTUAN PARAMETER K-1 ==//
-				if ($response["suhuAVE"] >= 23 && $response["suhuAVE"] <= 27) {
+				if ($response["suhuAVE"] >= 22 && $response["suhuAVE"] <= 27) {
 					$response["paramSuhu3"] = 1;
-				}else if($response["suhuAVE"] >= 21 && $response["suhuAVE"] <= 23){
+				}else if($response["suhuAVE"] >= 19 && $response["suhuAVE"] <= 22){
 					$response["paramSuhu3"] = 2;
-				}else if($response["suhuAVE"] >= 27 && $response["suhuAVE"] <= 30){
+				}else if($response["suhuAVE"] >= 27 && $response["suhuAVE"] <= 31){
 					$response["paramSuhu3"] = 3;
-				}else if($response["suhuAVE"] >= 30 && $response["suhuAVE"] <= 34){
+				}else if($response["suhuAVE"] <= 19){
 					$response["paramSuhu3"] = 4;
-				}else if($response["suhuAVE"] >= 34 && $response["suhuAVE"] <= 40){
+				}else if($response["suhuAVE"] >= 31){
 					$response["paramSuhu3"] = 5;
 				}
 
 				//== T E M B A K A U ==//
 
 				//== PENENTUAN PARAMETER K-1 ==//
-				if ($response["suhuAVE"] >= 21 && $response["suhuAVE"] <= 32) {
+				if ($response["suhuAVE"] >= 21 && $response["suhuAVE"] <= 31) {
 					$response["paramSuhu4"] = 1;
-				}else if($response["suhuAVE"] >= 32 && $response["suhuAVE"] <= 33){
+				}else if($response["suhuAVE"] >= 18 && $response["suhuAVE"] <= 21){
 					$response["paramSuhu4"] = 2;
-				}else if($response["suhuAVE"] >= 33 && $response["suhuAVE"] <= 36){
+				}else if($response["suhuAVE"] >= 31 && $response["suhuAVE"] <= 34){
 					$response["paramSuhu4"] = 3;
-				}else if($response["suhuAVE"] >= 36 && $response["suhuAVE"] <= 38){
+				}else if($response["suhuAVE"] <= 18){
 					$response["paramSuhu4"] = 4;
-				}else if($response["suhuAVE"] >= 38 && $response["suhuAVE"] <= 40){
+				}else if($response["suhuAVE"] >= 34){
 					$response["paramSuhu4"] = 5;
 				}
 
 				//== T E B U ==//
 
 				//== PENENTUAN PARAMETER K-1 ==//
-				if ($response["suhuAVE"] >= 26 && $response["suhuAVE"] <= 30) {
+				if ($response["suhuAVE"] >= 24 && $response["suhuAVE"] <= 34) {
 					$response["paramSuhu5"] = 1;
-				}else if($response["suhuAVE"] >= 30 && $response["suhuAVE"] <= 32){
+				}else if($response["suhuAVE"] >= 20 && $response["suhuAVE"] <= 23){
 					$response["paramSuhu5"] = 2;
-				}else if($response["suhuAVE"] >= 32 && $response["suhuAVE"] <= 34){
+				}else if($response["suhuAVE"] >= 34 && $response["suhuAVE"] <= 37){
 					$response["paramSuhu5"] = 3;
-				}else if($response["suhuAVE"] >= 34 && $response["suhuAVE"] <= 40){
+				}else if($response["suhuAVE"] <= 20){
 					$response["paramSuhu5"] = 4;
-				}else if($response["suhuAVE"] <= 26){
+				}else if($response["suhuAVE"] >= 37){
 					$response["paramSuhu5"] = 5;
 				}
 
 				//== PENENTUAN PARAMETER K-2 ==//
 				//== P A D I ==//
-				if ($response["kelembabanAVE"] >= 76 && $response["kelembabanAVE"] <= 86) {
+				if ($response["kelembabanAVE"] >= 85) {
 					$response["paramKelembaban"] = 1;
-				}else if($response["kelembabanAVE"] >= 86 && $response["kelembabanAVE"] <= 90){
+				}else if($response["kelembabanAVE"] >= 80 && $response["kelembabanAVE"] <= 85){
 					$response["paramKelembaban"] = 2;
-				}else if($response["kelembabanAVE"] >= 70 && $response["kelembabanAVE"] <= 76){
+				}else if($response["kelembabanAVE"] >= 75 && $response["kelembabanAVE"] <= 80){
 					$response["paramKelembaban"] = 3;
-				}else if($response["kelembabanAVE"] <= 70){
+				}else if($response["kelembabanAVE"] >= 70 && $response["kelembabanAVE"] <= 75){
 					$response["paramKelembaban"] = 4;
-				}else if($response["kelembabanAVE"] >= 90){
+				}else if($response["kelembabanAVE"] <= 70){
 					$response["paramKelembaban"] = 5;
 				}
 				//== PENENTUAN PARAMETER K-2 ==//
 				//== J A G O N G ==//
-				if ($response["kelembabanAVE"] >= 76 && $response["kelembabanAVE"] <= 83) {
+				if ($response["kelembabanAVE"] >= 60 && $response["kelembabanAVE"] <= 80) {
 					$response["paramKelembaban2"] = 1;
-				}else if($response["kelembabanAVE"] >= 83 && $response["kelembabanAVE"] <= 90){
+				}else if($response["kelembabanAVE"] >= 80 && $response["kelembabanAVE"] <= 90){
 					$response["paramKelembaban2"] = 2;
-				}else if($response["kelembabanAVE"] >= 70 && $response["kelembabanAVE"] <= 76){
+				}else if($response["kelembabanAVE"] >= 55 && $response["kelembabanAVE"] <= 60){
 					$response["paramKelembaban2"] = 3;
 				}else if($response["kelembabanAVE"] >= 90){
 					$response["paramKelembaban2"] = 4;
-				}else if($response["kelembabanAVE"] <= 70){
+				}else if($response["kelembabanAVE"] <= 55){
 					$response["paramKelembaban2"] = 5;
 				}
 				//== PENENTUAN PARAMETER K-2 ==//
@@ -337,13 +337,13 @@ class HitungRekomendasiController extends Controller
 				}
 				//== PENENTUAN PARAMETER K-2 ==//
 				//== T E M B A K A U ==//
-				if ($response["kelembabanAVE"] >= 60 && $response["kelembabanAVE"] <= 80) {
+				if ($response["kelembabanAVE"] >= 61 && $response["kelembabanAVE"] <= 72) {
 					$response["paramKelembaban4"] = 1;
-				}else if($response["kelembabanAVE"] >= 80 && $response["kelembabanAVE"] <= 88){
+				}else if($response["kelembabanAVE"] >= 72 && $response["kelembabanAVE"] <= 80){
 					$response["paramKelembaban4"] = 2;
-				}else if($response["kelembabanAVE"] >= 55 && $response["kelembabanAVE"] <= 60){
+				}else if($response["kelembabanAVE"] >= 55 && $response["kelembabanAVE"] <= 65){
 					$response["paramKelembaban4"] = 3;
-				}else if($response["kelembabanAVE"] >= 88){
+				}else if($response["kelembabanAVE"] >= 80){
 					$response["paramKelembaban4"] = 4;
 				}else if($response["kelembabanAVE"] <= 55){
 					$response["paramKelembaban4"] = 5;
@@ -354,81 +354,81 @@ class HitungRekomendasiController extends Controller
 					$response["paramKelembaban5"] = 1;
 				}else if($response["kelembabanAVE"] >= 40 && $response["kelembabanAVE"] <= 45){
 					$response["paramKelembaban5"] = 2;
-				}else if($response["kelembabanAVE"] <= 40){
+				}else if($response["kelembabanAVE"] <= 66 && $response["kelembabanAVE"] <= 70){
 					$response["paramKelembaban5"] = 3;
-				}else if($response["kelembabanAVE"] >= 65 && $response["kelembabanAVE"] <= 70){
-					$response["paramKelembaban5"] = 4;
 				}else if($response["kelembabanAVE"] >= 70){
+					$response["paramKelembaban5"] = 4;
+				}else if($response["kelembabanAVE"] <= 40){
 					$response["paramKelembaban5"] = 5;
 				}
 
 				//== PENENTUAN PARAMETER K-3 ==//
 				//== P A D I ==//
-				if ($response["cuacaAngkaTotal"] >= 100 && $response["cuacaAngkaTotal"] <= 200) {
+				if ($response["cuacaAngkaTotal"] == 200) {
 					$response["paramCuaca"] = 1;
-				}else if($response["cuacaAngkaTotal"] >= 201 && $response["cuacaAngkaTotal"] <= 300){
+				}else if($response["cuacaAngkaTotal"] >= 100 && $response["cuacaAngkaTotal"] <= 199){
 					$response["paramCuaca"] = 2;
-				}else if($response["cuacaAngkaTotal"] >= 301 && $response["cuacaAngkaTotal"] <= 370){
+				}else if($response["cuacaAngkaTotal"] >= 201 && $response["cuacaAngkaTotal"] <= 300){
 					$response["paramCuaca"] = 3;
-				}else if($response["cuacaAngkaTotal"] >= 371 && $response["cuacaAngkaTotal"] <= 450){
+				}else if($response["cuacaAngkaTotal"] <= 100){
 					$response["paramCuaca"] = 4;
-				}else if($response["cuacaAngkaTotal"] >= 451 && $response["cuacaAngkaTotal"] <= 500){
+				}else if($response["cuacaAngkaTotal"] >= 300){
 					$response["paramCuaca"] = 5;
 				}
 
 				//== PENENTUAN PARAMETER K-3 ==//
 				//== J A G U N G ==//
-				if ($response["cuacaAngkaTotal"] >= 85 && $response["cuacaAngkaTotal"] <= 200) {
+				if ($response["cuacaAngkaTotal"] >= 200 && $response["cuacaAngkaTotal"] <= 301) {
 					$response["paramCuaca2"] = 1;
-				}else if($response["cuacaAngkaTotal"] >= 201 && $response["cuacaAngkaTotal"] <= 250){
+				}else if($response["cuacaAngkaTotal"] >= 301 && $response["cuacaAngkaTotal"] <= 350){
 					$response["paramCuaca2"] = 2;
-				}else if($response["cuacaAngkaTotal"] >= 251 && $response["cuacaAngkaTotal"] <= 300){
+				}else if($response["cuacaAngkaTotal"] >= 150 && $response["cuacaAngkaTotal"] <= 200){
 					$response["paramCuaca2"] = 3;
-				}else if($response["cuacaAngkaTotal"] >= 301 && $response["cuacaAngkaTotal"] <= 400){
+				}else if($response["cuacaAngkaTotal"] >= 301 && $response["cuacaAngkaTotal"] >= 350){
 					$response["paramCuaca2"] = 4;
-				}else if($response["cuacaAngkaTotal"] >= 401 && $response["cuacaAngkaTotal"] <= 450){
+				}else if($response["cuacaAngkaTotal"] >= 401 && $response["cuacaAngkaTotal"] <= 150){
 					$response["paramCuaca2"] = 5;
 				}
 
 				//== PENENTUAN PARAMETER K-3 ==//
 				//== K E D E L A I ==//
-				if ($response["cuacaAngkaTotal"] >= 100 && $response["cuacaAngkaTotal"] <= 400) {
+				if ($response["cuacaAngkaTotal"] >= 100 && $response["cuacaAngkaTotal"] <= 150) {
 					$response["paramCuaca3"] = 1;
-				}else if($response["cuacaAngkaTotal"] >= 401 && $response["cuacaAngkaTotal"] <= 500){
+				}else if($response["cuacaAngkaTotal"] >= 90 && $response["cuacaAngkaTotal"] <= 100){
 					$response["paramCuaca3"] = 2;
-				}else if($response["cuacaAngkaTotal"] >= 501 && $response["cuacaAngkaTotal"] <= 550){
+				}else if($response["cuacaAngkaTotal"] >= 151 && $response["cuacaAngkaTotal"] <= 170){
 					$response["paramCuaca3"] = 3;
-				}else if($response["cuacaAngkaTotal"] >= 551 && $response["cuacaAngkaTotal"] <= 650){
+				}else if($response["cuacaAngkaTotal"] <= 90){
 					$response["paramCuaca3"] = 4;
-				}else if($response["cuacaAngkaTotal"] >= 651 && $response["cuacaAngkaTotal"] <= 750){
+				}else if($response["cuacaAngkaTotal"] >= 170){
 					$response["paramCuaca3"] = 5;
 				}
 
 				//== PENENTUAN PARAMETER K-3 ==//
 				//== T E M B A K A U ==//
-				if ($response["cuacaAngkaTotal"] >= 125 && $response["cuacaAngkaTotal"] <= 167) {
+				if ($response["cuacaAngkaTotal"] >= 125 && $response["cuacaAngkaTotal"] <= 290) {
 					$response["paramCuaca4"] = 1;
-				}else if($response["cuacaAngkaTotal"] >= 168 && $response["cuacaAngkaTotal"] <= 200){
+				}else if($response["cuacaAngkaTotal"] >= 90 && $response["cuacaAngkaTotal"] <= 194){
 					$response["paramCuaca4"] = 2;
-				}else if($response["cuacaAngkaTotal"] >= 201 && $response["cuacaAngkaTotal"] <= 267){
+				}else if($response["cuacaAngkaTotal"] >= 291 && $response["cuacaAngkaTotal"] <= 400){
 					$response["paramCuaca4"] = 3;
-				}else if($response["cuacaAngkaTotal"] >= 268 && $response["cuacaAngkaTotal"] <= 350){
+				}else if($response["cuacaAngkaTotal"] <= 90){
 					$response["paramCuaca4"] = 4;
-				}else if($response["cuacaAngkaTotal"] >= 351 && $response["cuacaAngkaTotal"] <= 400){
+				}else if($response["cuacaAngkaTotal"] >= 400){
 					$response["paramCuaca4"] = 5;
 				}
 
 				//== PENENTUAN PARAMETER K-3 ==//
 				//== T E B U ==//
-				if ($response["cuacaAngkaTotal"] >= 142 && $response["cuacaAngkaTotal"] <= 208) {
+				if ($response["cuacaAngkaTotal"] == 200) {
 					$response["paramCuaca5"] = 1;
-				}else if($response["cuacaAngkaTotal"] >= 209 && $response["cuacaAngkaTotal"] <= 300){
+				}else if($response["cuacaAngkaTotal"] >= 100 && $response["cuacaAngkaTotal"] <= 199){
 					$response["paramCuaca5"] = 2;
-				}else if($response["cuacaAngkaTotal"] >= 301 && $response["cuacaAngkaTotal"] <= 500){
+				}else if($response["cuacaAngkaTotal"] >= 201 && $response["cuacaAngkaTotal"] <= 300){
 					$response["paramCuaca5"] = 3;
-				}else if($response["cuacaAngkaTotal"] >= 501 && $response["cuacaAngkaTotal"] <= 700){
+				}else if($response["cuacaAngkaTotal"] <= 100){
 					$response["paramCuaca5"] = 4;
-				}else if($response["cuacaAngkaTotal"] >= 701 && $response["cuacaAngkaTotal"] <= 800){
+				}else if($response["cuacaAngkaTotal"] >= 300){
 					$response["paramCuaca5"] = 5;
 				}
 				//== UTILITY DAN NORMALISASI ==//

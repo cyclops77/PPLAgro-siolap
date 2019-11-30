@@ -26,7 +26,11 @@ class HargaController extends Controller
             ->where('jenis_komoditas','=','kedela')
             ->get(); 
 
-        return view('verify.index', compact('semua','tebu','tembakau','kedelai','padi'));    
+            $jagung = \App\Produk::where('isverify','=','no')
+            ->where('jenis_komoditas','=','jagung')
+            ->get(); 
+
+        return view('verify.index', compact('semua','tebu','tembakau','kedelai','padi', 'jagung'));    
     }
     public function verifNow(Request $req)
     {

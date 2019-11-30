@@ -28,13 +28,33 @@ class ProdukController extends Controller
         $kedelai = \App\Produk::where('petani_id','=',$petaniID->id)
             ->where('jenis_komoditas','=','kedela')
             ->get();  
+        
+        $jagung = \App\Produk::where('petani_id','=',$petaniID->id)
+            ->where('jenis_komoditas','=','jagung')
+            ->get();    
 
 
-		return view('product.index', compact('semua','tebu','tembakau','kedelai','padi'));
+		return view('product.index', compact('semua','tebu','tembakau','kedelai','padi','jagung'));
     }
     public function create()
     {
     	return view('product.create');
+    }
+    public function pembelianYang()
+    {
+        $userid = Auth::user()->id;
+        $petani = \App\Petani::where('user_id','=',$userid)->first();
+
+        $thisQuery = \App\Pembayaran::select('mitra.name as nama','mitra.address as alamat','pembelian.status_bayar as status','produk.nama_barang as nama_barang','pembelian.harga_total as harga_total','pembelian.jumlah as jumlah')
+            ->join('mitra','mitra.id','=','pembelian.mitra_id')
+            ->join('produk','produk.id','=','pembelian.produk_id')
+            ->join('petani','petani.id','=','produk.petani_id')
+            ->where('produk.petani_id','=',$petani->id)
+            ->where('pembelian.status_bayar','=','Sudah Bayar')
+            ->paginate(10);
+
+        // dd($thisQuery);
+        return view('petani.pembelian',compact('thisQuery'));
     }
     public function insert(Request $req)
     {
@@ -71,7 +91,7 @@ class ProdukController extends Controller
 
             // dd($userID);
 
-        	return redirect()->back()->with('sukses','berhasil memasarkan produk');	
+        	return redirect()->back()->with('sukses','produk anda sedang dalam verifikasi');	
         }}
     }
     public function edit($id)
