@@ -6,6 +6,26 @@ Transaksi
 
 @section('content')
 
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+	<li class="breadcrumb-item active" aria-current="page">Transaksi</li>
+    <li class="breadcrumb-item active" aria-current="page">Refresh Transaksi</li>
+  </ol>
+</nav>  
+
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('farm/img/bg-img/47.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>REFRESH TRANSAKSI</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @if(session('sukses'))
 <div class="alert alert-success" >
 {{session('sukses')}}

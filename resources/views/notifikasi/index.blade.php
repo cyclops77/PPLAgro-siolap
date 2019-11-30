@@ -7,7 +7,30 @@ Notifikasi
 
 
 @section('content')
-<div class="col-md-12">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Notifikasi</li>
+  </ol>
+</nav>  
+
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('farm/img/bg-img/48.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>NOTIFIKASI</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+  <br>
+
+<br>
+
+<div class="col-md-14 mt-2">
 <div class="row">
 	<div class="col-md-3">
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">

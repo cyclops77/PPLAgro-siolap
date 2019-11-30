@@ -5,7 +5,24 @@ Produk Saya
 @stop
 
 @section('content')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Optimasi Lahan</li>
+  </ol>
+</nav>  
 
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('farm/img/bg-img/49.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>OPTIMASI LAHAN</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div class="card">
 	<div class="card-body">
@@ -16,10 +33,10 @@ Produk Saya
 		,
 		{{$response["waktu"]}}
 		</p>
-		<p>PARAMETER SUHU MIN : {{$response['AngkasuhuMIN']}}</p>
-		<p>KELEMBABAN : {{$response['kelembaban']}}</p>
+		<p>PARAMETER SUHU MIN : {{$response['AngkasuhuMIN']}} <sup>o</sup>C</p>
+		<p>KELEMBABAN : {{$response['kelembaban']}} %</p>
 		<p>CUACA : {{$response['cuaca']}}</p>
-		<p>SUHU : {{$response['suhuAVE']}}</p>
+		<p>SUHU : {{$response['suhuAVE']}} <sup>o</sup>C</p>
 		</div>
 		<div class="col-md-6">			
 		<p>

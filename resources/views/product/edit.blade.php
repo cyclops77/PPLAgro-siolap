@@ -5,6 +5,27 @@ Pasarkan Produk
 @stop
 
 @section('content')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit Barang</li>
+  </ol>
+</nav> 
+ <!-- ##### Breadcrumb Area Start ##### -->
+ <!-- <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('farm/img/bg-img/18.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>Barang</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</nav>  -->
+
 @if(session('sukses'))
 <div class="alert alert-success" >
 {{session('sukses')}}
@@ -15,7 +36,7 @@ Pasarkan Produk
 {{session('gagal')}}
 </div>
 @endif
-<div class="col-md-6 offset-3">
+<div class="col-md12">
     <div class="card">
         <div class="card-header">Edit Barang</div>
         <form method="POST" action="/edit-barang-saya" accept-charset="UTF-8" enctype="multipart/form-data">
@@ -24,7 +45,7 @@ Pasarkan Produk
                 <input type="hidden" value="{{$produk->id}}" name="barangID">
                 <div class="form-group">
                     <label for="name" class="control-label">Nama Produk</label>
-                    <input type="text" class="form-control" name="nama"  value="{{$produk->nama_barang}}">
+                    <input type="text" class="form-control" name="nama"  value="{{$produk->nama_barang}}" required>
                 </div>
                 <div class="form-group">
                     <label for="" class="control-label">Jenis Komoditas</label>
@@ -33,15 +54,16 @@ Pasarkan Produk
                         <option value="tembakau" {{$produk->jenis_komoditas=="tembakau" ? "selected" : ""}}>Tembakau</option>
                         <option value="tebu" {{$produk->jenis_komoditas=="tebu" ? "selected" : ""}}>Tebu</option>
                         <option value="kedela" {{$produk->jenis_komoditas=="kedelai" ? "selected" : ""}}>Kedelai</option>
+                        <option value="jagung" {{$produk->jenis_komoditas=="Jagung" ? "selected" : ""}}>Jagung</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="name" class="control-label">Harga Produk/kg</label>
-                    <input id="" type="number" class="form-control" name="harga"  value="{{$produk->harga_barang}}">
+                    <input id="" type="number" class="form-control" name="harga"  value="{{$produk->harga_barang}}" required min="1">
                 </div>
                 <div class="form-group">
                     <label for="name" class="control-label">Stok</label>
-                    <input id="" type="number" class="form-control" name="stock"  value="{{$produk->stock}}">
+                    <input id="" type="number" class="form-control" name="stock"  value="{{$produk->stock}}" required min="1">
                 </div>
                 <img class="card-img-top" src="{{$produk->getAvatar()}}" alt="Card image cap" height="200px" style="border-bottom: 1px solid black">
                 <div class="form-group">

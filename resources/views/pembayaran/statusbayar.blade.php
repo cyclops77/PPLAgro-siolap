@@ -7,18 +7,31 @@ Status Pembayaran
 @section('content')
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">Pembayaran</li>
   </ol>
 </nav>  
+
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('farm/img/bg-img/47.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>PEMBAYARAN</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="card">
   <div class="card-body">
     <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Wajib Bayar({{$response['pembayaranWajibC']}})</a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Telat Bayar({{$response['pembayaranTelatC']}})</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Semua({{$response['pembayaranC']}})</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contacts" role="tab" aria-controls="nav-contacts" aria-selected="false">Bermasalah({{$response['pembayaranInvalidC']}})</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Semua Pembayaran({{$response['pembayaranC']}})</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contacts" role="tab" aria-controls="nav-contacts" aria-selected="false">Semua Pembayaran Invalid({{$response['pembayaranInvalidC']}})</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">

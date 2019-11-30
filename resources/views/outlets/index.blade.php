@@ -3,7 +3,12 @@
 @section('title', __('outlet.list'))
 
 @section('content')
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Info Saya</li>
+  </ol>
+</nav>  
 
 <div style="display: {{Auth::user()->role=="mitra" ? "block" : "none"}}">
 <div class="card">

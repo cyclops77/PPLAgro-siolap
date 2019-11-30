@@ -5,7 +5,27 @@ Upload Bukti
 @stop
 
 @section('content')
-<div class="col-md-6 offset-3">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/pembayaran')}}">Pembayaran</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Upload Bukti</li>
+  </ol>
+</nav>  
+
+<!-- <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url{{asset('farm/farm/img/bg-img/47.jpg')}};">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>UPLOAD BUKTI</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<div class="col-md-14">
     <div class="card">
         <div class="card-header">Form Upload Bukti</div>
         <form method="POST" action="/upload-bukti-tf-barang" accept-charset="UTF-8" enctype="multipart/form-data">
@@ -16,7 +36,7 @@ Upload Bukti
             	<h3>BRI-0021 0115 2396 507</h3>
 	
             	<p>Nama Barang : <strong>{{$barang->nama_barang}}</strong></p>
-            	<p>Harga Total : <strong>{{$barang->harga_total}}</strong></p>
+            	<p>Harga Total : <strong>Rp. {{$barang->harga_total}}</strong></p>
 				<p>Jumlah Yang Dibeli : <strong>{{$barang->jumlah}}</strong></p>
                 
                 <img src="/bukti_tf/default.png" height="200px" style="	width: 30rem;object-fit: cover; display: {{empty($barang->bukti_tf) ? "block" : "none"}}">

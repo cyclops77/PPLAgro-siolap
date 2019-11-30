@@ -1,13 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
+ 
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Form {{ __('Login') }}</div>
+                
 
                 <div class="card-body">
+                <img class="float-left" src="{{ asset('farm/img/bg-img/Artboard1.png')}}" alt="Card image cap" height="200px" style="border-bottom: 1px solid black;object-fit: cover;width: 22rem">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

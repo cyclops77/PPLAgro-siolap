@@ -5,8 +5,16 @@ Edit
 @stop
 
 @section('content')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/outlets')}}">Info Saya</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit Info</li>
+  </ol>
+</nav>  
+
 <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-12">
         @if (request('action') == 'delete' && $outlet)
         @can('delete', $outlet)
             <div class="card">

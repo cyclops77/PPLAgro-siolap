@@ -5,6 +5,25 @@ Verifikasi Bukti
 @stop
 
 @section('content')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Transaksi</li>
+    <li class="breadcrumb-item active" aria-current="page">Verifikasi Transaksi</li>
+  </ol>
+</nav>  
+
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('farm/img/bg-img/47.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>VERIFIKASI TRANSAKSI</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @if(session('sukses'))
 <div class="alert alert-success" >
@@ -23,7 +42,7 @@ Verifikasi Bukti
   <img src="/bukti_tf/default.png" height="200px" style="	width: 32rem;object-fit: cover; display: {{empty($mp->bukti_tf) ? "block" : "none"}}">
                 <img class="card-img-top" src="{{ url('/bukti_tf/'.$mp->bukti_tf) }}"  alt="Card image cap"  style="width: 32rem;object-fit: cover;display: {{empty($mp->bukti_tf) ? "none" : "block"}}">
   <div class="card-body text-dark">
-    <h5 class="card-title">{{$mp->harga_total}}</h5><br>
+    <h5 class="card-title">Rp. {{$mp->harga_total}}</h5><br>
     
     <!-- <a href="/barang/{{$mp->id}}/beli" class="btn btn-primary float-left">Beli Sekarang</a> -->
     <button type="button" class="btn btn-dark float-left" data-toggle="modal" data-target="#exampleModalBukti{{$mp->id_pembelian}}">

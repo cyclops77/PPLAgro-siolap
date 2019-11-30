@@ -6,7 +6,7 @@
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header">Detail Lokasi Penjual</div>
+            <div class="card-header">Detail Lokasi Mitra</div>
             <div class="card-body">
                 <table class="table table-hover table-stripped">
                     <tbody>

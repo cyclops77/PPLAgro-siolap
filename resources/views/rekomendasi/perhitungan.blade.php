@@ -5,6 +5,25 @@ Produk Saya
 @stop
 
 @section('content')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Rekomendasi Tanam</li>
+  </ol>
+</nav>  
+
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('farm/img/bg-img/49.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>REKOMENDASI TANAM</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @if(session('sukses'))
 <div class="alert alert-success" >
 {{session('sukses')}}
@@ -16,7 +35,7 @@ Produk Saya
 </div>
 @endif
 
-<div class="col-md-6 offset-3">
+<div class="col-md-14">
     <div class="card">
         <div class="card-header">Cari Rekomendasi . . .</div>
         <form method="POST" action="/hitung-rekomendasi-penanaman" accept-charset="UTF-8" enctype="multipart/form-data">

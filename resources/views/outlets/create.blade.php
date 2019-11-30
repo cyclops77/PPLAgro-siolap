@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<!-- buat akun mitra -->
 @section('judul')
 Buat Akun Petani
 @stop
@@ -19,7 +19,7 @@ Buat Akun Petani
 </div>
 @endif
         <div class="card">
-            <div class="card-header">Buat Akun Petani</div>
+            <div class="card-header">Buat Akun Mitra</div>
             <form method="POST" action="{{ route('outlets.store') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <div class="card-body">

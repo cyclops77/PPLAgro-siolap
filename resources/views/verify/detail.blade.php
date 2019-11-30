@@ -39,7 +39,7 @@ Produk Saya
 
 
 
-	<input type="submit" value="Beli Sekarang" class="btn btn-primary mt-3">
+	<input type="submit" value="Kirim" class="btn btn-primary mt-3">
 	</div>
 	</div>
   </div>

@@ -7,7 +7,23 @@ Status Pembayaran
 @stop
 
 @section('content')
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Riwayat Pengiriman</li>
+  </ol>
+</nav>
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('farm/img/bg-img/46.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>RIWAYAT PENGIRIMAN</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div class="card">
   <div class="card-body">

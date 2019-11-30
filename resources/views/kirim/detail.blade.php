@@ -16,7 +16,18 @@ Status Pembayaran
     <li class="breadcrumb-item"><a href="{{url('/riwayat-pembelian')}}">Riwayat Pengiriman</a></li>
     <li class="breadcrumb-item active" aria-current="page">Detail Lokasi</li>
   </ol>
-</nav>	
+</nav>
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('farm/img/bg-img/48.jpg');">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12">
+          <div class="breadcrumb-text">
+            <h2>DETAIL LOKASI</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>	
 <div id="mapid"></div>
 </div>	
 
