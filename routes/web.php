@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'OutletMapController@index');
+// Route::get('/', 'OutletMapController@index');
 
 Auth::routes();
 
@@ -29,6 +29,8 @@ Route::get('/info-saya/{id}','HomeController@infoSaya');
 
 
 Route::group(['middleware' => ['auth','checkRole:petani']], function(){
+
+Route::get('/pembelian-produk','ProdukController@pembelianYang');
 
 Route::get('/produk','ProdukController@index');
 
@@ -111,3 +113,17 @@ Route::post('/acc-barang-sudah-masuk', 'PengirimanController@barangSampe');
 Route::get('/notifikasi','NotifikasiController@index');
 
 });	
+
+Route::get('about', function () {
+    return view('about');
+});
+Route::get('product', function () {
+    return view('ourproduct');
+});
+Route::get('contact', function () {
+    return view('contact');
+});
+Route::get('/', function () {
+    return view('master');
+});
+
