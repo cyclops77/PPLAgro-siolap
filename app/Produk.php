@@ -24,4 +24,8 @@ class Produk extends Model
           return "Belum Terverifikasi";
         }return "Terverifikasi";
       }  
+      public function petani()
+      {
+          return $this->belongsTo('App\Petani');
+      }
 }

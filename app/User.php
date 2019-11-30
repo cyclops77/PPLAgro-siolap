@@ -32,4 +32,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Outlet');
     }
+
+    public function petani()
+    {
+        return $this->hasOne('App\Petani');
+    }
 }
